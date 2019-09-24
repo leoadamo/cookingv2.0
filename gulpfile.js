@@ -1,7 +1,9 @@
+/* Import dos pacotes instalados com NPM */
 const { src, dest, watch, parallel } = require('gulp')
 const sass = require('gulp-sass')
 const bs = require('browser-sync').create()
 
+/* Levantando um server no browser */
 function browserSync(done) {
   bs.init({
     server: {
@@ -12,22 +14,25 @@ function browserSync(done) {
   done()
 }
 
+/* Função para fazer o livereload no browser */
 function bsReload(done) {
   bs.reload()
   done()
 }
 
-function css() {
+/* Função para compilar, comprimir e injetar no browser as alterações nos arquivos SASS */
+function compileSass() {
   return src('app/scss/**/*.scss')
     .pipe(sass({ outputStyle: 'compressed' }))
     .pipe(dest('app/css'))
     .pipe(bs.stream())
 }
 
+/* Função para observar as mudanças nos arquivos SASS e HTML */
 function watchFiles() {
-  watch('app/scss/**/*.scss', css)
+  watch('app/scss/**/*.scss', compileSass)
   watch('app/*.html', bsReload)
 }
 
-exports.css = css
-exports.watch = parallel(watchFiles, browserSync)
+/* Exportando Tasks */
+exports.watch = parallel(browserSync, watchFiles)
