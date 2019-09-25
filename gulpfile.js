@@ -1,5 +1,5 @@
 /* Import dos pacotes instalados com NPM */
-const { src, dest, watch, parallel } = require('gulp')
+const { src, dest, watch, series } = require('gulp')
 const sass = require('gulp-sass')
 const bs = require('browser-sync').create()
 
@@ -24,7 +24,7 @@ function bsReload(done) {
 function compileSass() {
   return src('app/scss/**/*.scss')
     .pipe(sass({ outputStyle: 'compressed' }))
-    .pipe(dest('app/css'))
+    .pipe(dest('app/css/'))
     .pipe(bs.stream())
 }
 
@@ -32,7 +32,8 @@ function compileSass() {
 function watchFiles() {
   watch('app/scss/**/*.scss', compileSass)
   watch('app/*.html', bsReload)
+  watch('app/js/**/*.js', bsReload)
 }
 
 /* Exportando Tasks */
-exports.watch = parallel(browserSync, watchFiles)
+exports.watch = series(browserSync, compileSass, watchFiles)
