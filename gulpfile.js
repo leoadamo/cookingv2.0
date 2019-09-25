@@ -1,6 +1,7 @@
 /* Import dos pacotes instalados com NPM */
 const { src, dest, watch, series } = require('gulp')
 const sass = require('gulp-sass')
+const useref = require('gulp-useref')
 const bs = require('browser-sync').create()
 
 /* Levantando um server no browser */
@@ -28,6 +29,13 @@ function compileSass() {
     .pipe(bs.stream())
 }
 
+/* Função para otimizar os assets para produção */
+function useRef() {
+  return src('app/*.html')
+    .pipe(useref())
+    .pipe(dest('dist'))
+}
+
 /* Função para observar as mudanças nos arquivos SASS e HTML */
 function watchFiles() {
   watch('app/scss/**/*.scss', compileSass)
@@ -37,3 +45,4 @@ function watchFiles() {
 
 /* Exportando Tasks */
 exports.watch = series(browserSync, compileSass, watchFiles)
+exports.build = useRef
