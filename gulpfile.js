@@ -39,7 +39,6 @@ function useRef() {
 			.pipe(useref())
 			// Minifies only if it's a JavaScript file
 			.pipe(gulpIf('*.js', uglify()))
-			.pipe(gulpIf('*.css', cssnano()))
 			.pipe(dest('dist'))
 	);
 }
