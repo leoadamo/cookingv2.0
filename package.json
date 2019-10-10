@@ -24,6 +24,9 @@
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.2",
     "gulp-useref": "^3.1.6",
-    "jquery": "^3.4.1"
+    "jeet": "^7.2.0",
+    "jquery": "^3.4.1",
+    "normalize.scss": "^0.1.0",
+    "rupture-sass": "^0.3.0"
   }
 }

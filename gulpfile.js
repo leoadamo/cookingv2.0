@@ -26,7 +26,7 @@ function bsReload(done) {
 
 /* Função para compilar, comprimir e injetar no browser as alterações nos arquivos SASS */
 function compileSass() {
-	return src('app/scss/**/*.scss')
+	return src('app/scss/main.scss')
 		.pipe(sass({ outputStyle: 'compressed' }))
 		.pipe(dest('app/css/'))
 		.pipe(bs.stream());

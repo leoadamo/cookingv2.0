@@ -1,10 +1,13 @@
-@import 'settings/_reset';
-@import 'atoms/_test';
+/* LIBS */
+@import 'node_modules/normalize.scss/normalize';
+@import 'node_modules/rupture-sass/rupture';
+@import 'node_modules/jeet/scss/index';
+
+/* ATOMS */
+@import 'atoms/test';
 
 .teste {
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
+	@include align('both');
 	text-align: center;
 
 	h1 {
