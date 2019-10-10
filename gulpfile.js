@@ -34,13 +34,10 @@ function compileSass() {
 
 /* Função para otimizar os assets para produção */
 function useRef() {
-	return (
-		src('app/*.html')
-			.pipe(useref())
-			// Minifies only if it's a JavaScript file
-			.pipe(gulpIf('*.js', uglify()))
-			.pipe(dest('dist'))
-	);
+	return src('app/*.html')
+		.pipe(useref())
+		.pipe(gulpIf('*.js', uglify()))
+		.pipe(dest('dist'));
 }
 
 /* Função para observar as mudanças nos arquivos SASS e HTML */
