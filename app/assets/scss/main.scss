@@ -3,5 +3,9 @@
 @import 'node_modules/rupture-sass/rupture';
 @import 'node_modules/jeet/scss/index';
 
+/* CONFIGS */
+@import 'settings/fonts.scss';
+@import 'settings/colors.scss';
+
 /* ATOMS */
 @import 'atoms/test';

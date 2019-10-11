@@ -26,7 +26,7 @@ function bsReload(done) {
 
 /* Função para compilar, comprimir e injetar no browser as alterações nos arquivos SASS */
 function compileSass() {
-	return src('app/scss/main.scss')
+	return src('app/assets/scss/main.scss')
 		.pipe(sass({ outputStyle: 'compressed' }))
 		.pipe(dest('app/css/'))
 		.pipe(bs.stream());
@@ -42,9 +42,9 @@ function useRef() {
 
 /* Função para observar as mudanças nos arquivos SASS e HTML */
 function watchFiles() {
-	watch('app/scss/**/*.scss', compileSass);
+	watch('app/assets/scss/**/*.scss', compileSass);
 	watch('app/*.html', bsReload);
-	watch('app/js/**/*.js', bsReload);
+	watch('app/assets/js/**/*.js', bsReload);
 }
 
 /* Exportando Tasks */
