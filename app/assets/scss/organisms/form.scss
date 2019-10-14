@@ -1,0 +1,22 @@
+.form {
+	@include center(100%);
+
+	&__control {
+		background-color: $quaternary-color;
+		padding: 10%;
+		border-radius: 20px;
+		text-align: center;
+
+		input {
+			width: 100%;
+			border: none;
+			border-bottom: 1px solid #dddddd;
+			padding: 5% 0;
+			margin-bottom: 8%;
+
+			&::placeholder {
+				opacity: 0.3;
+			}
+		}
+	}
+}

@@ -1,0 +1,9 @@
+.sign-in {
+	width: 30%;
+	@include align('both');
+
+	.btn {
+		@include align('horizontal');
+		margin-top: 5%;
+	}
+}

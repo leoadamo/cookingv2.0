@@ -26,7 +26,6 @@
     "gulp-useref": "^3.1.6",
     "jeet": "^7.2.0",
     "jquery": "^3.4.1",
-    "normalize.scss": "^0.1.0",
     "rupture-sass": "^0.3.0"
   }
 }

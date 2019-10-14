@@ -1,0 +1,13 @@
+.btn {
+	display: block;
+	background-color: $primary-color;
+	border: none;
+	padding: 2% 10%;
+	border-radius: 15px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $secondary-color;
+		transition: all 0.4s ease-out;
+	}
+}
