@@ -3,19 +3,17 @@
 	@include clearfix();
 
 	&__item {
-		@include column(1/2, $gutter: 0);
+		@include span(1/2);
 
 		&__link {
 			display: block;
 			text-decoration: none;
 			padding: 4%;
-			margin-bottom: 2%;
 
 			&:after {
 				content: '';
 				display: block;
-				margin-top: 5%;
-				@include center();
+				margin: 5% auto 0;
 				width: 0;
 				height: 2px;
 				background-color: $quaternary-color;

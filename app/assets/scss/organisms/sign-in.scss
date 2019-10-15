@@ -1,9 +1,15 @@
 .sign-in {
-	@include center(30%);
+	width: 80%;
 	@include align(both);
+	@include above(m) {
+		@include center(30%);
+	}
 
 	.btn {
+		margin-top: 8%;
 		@include align(horizontal);
-		margin-top: 5%;
+		@include above(m) {
+			margin-top: 5%;
+		}
 	}
 }

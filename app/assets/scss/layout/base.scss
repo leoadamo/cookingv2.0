@@ -5,8 +5,11 @@
 
 	.stripe {
 		height: 50%;
-		border-bottom-left-radius: 200px;
+		border-bottom-left-radius: 100px;
 		background-color: $tertiary-color;
+		@include above(m) {
+			border-bottom-left-radius: 200px;
+		}
 	}
 }
 
