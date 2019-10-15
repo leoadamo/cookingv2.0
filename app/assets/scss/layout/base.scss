@@ -8,6 +8,9 @@
 		border-bottom-left-radius: 100px;
 		background-color: $tertiary-color;
 		@include above(m) {
+			border-bottom-left-radius: 150px;
+		}
+		@include above(l) {
 			border-bottom-left-radius: 200px;
 		}
 	}
