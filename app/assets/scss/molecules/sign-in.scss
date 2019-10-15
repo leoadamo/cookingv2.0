@@ -9,14 +9,9 @@
 	}
 
 	.btn {
-		width: 80%;
 		margin-top: 8%;
-		@include align(horizontal);
 		@include above(m) {
 			margin-top: 5%;
-		}
-		@include above(l) {
-			width: 60%;
 		}
 	}
 }

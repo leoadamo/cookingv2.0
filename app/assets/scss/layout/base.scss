@@ -17,5 +17,12 @@
 }
 
 .container {
-	@include center(1200px);
+	width: 80%;
+	@include align(both);
+	@include above(m) {
+		@include center(60%);
+	}
+	@include above(l) {
+		@include center(30%);
+	}
 }

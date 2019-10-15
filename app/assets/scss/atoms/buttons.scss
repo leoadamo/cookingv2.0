@@ -1,10 +1,15 @@
 .btn {
+	width: 80%;
+	@include above(l) {
+		width: 60%;
+	}
 	display: block;
 	background-color: $primary-color;
 	border: none;
 	padding: 3% 10%;
 	border-radius: 30px;
 	cursor: pointer;
+	@include align(horizontal);
 
 	&:hover {
 		background-color: $secondary-color;
