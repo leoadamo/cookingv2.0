@@ -11,7 +11,8 @@ const bs = require('browser-sync').create();
 function browserSync(done) {
 	bs.init({
 		server: {
-			baseDir: 'app/'
+			baseDir: ['app/pages', 'app/'],
+			index: 'index.html'
 		},
 		port: 3000
 	});
@@ -27,26 +28,27 @@ function bsReload(done) {
 /* Função para compilar, comprimir e injetar no browser as alterações nos arquivos SASS */
 function compileSass() {
 	return src('app/assets/scss/main.scss')
-		.pipe(sass({ outputStyle: 'compressed' }))
+		.pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
 		.pipe(dest('app/css/'))
 		.pipe(bs.stream());
 }
 
 /* Função para otimizar os assets para produção */
 function useRef() {
-	return src('app/*.html')
+	return src('app/pages/*.html')
 		.pipe(useref())
 		.pipe(gulpIf('*.js', uglify()))
+		.pipe(gulpIf('*.css', cssnano()))
 		.pipe(dest('dist'));
 }
 
 /* Função para observar as mudanças nos arquivos SASS e HTML */
 function watchFiles() {
 	watch('app/assets/scss/**/*.scss', compileSass);
-	watch('app/*.html', bsReload);
+	watch('app/pages/*.html', bsReload);
 	watch('app/assets/js/**/*.js', bsReload);
 }
 
 /* Exportando Tasks */
-exports.watch = series(browserSync, compileSass, watchFiles);
+exports.default = series(browserSync, compileSass, watchFiles);
 exports.build = useRef;

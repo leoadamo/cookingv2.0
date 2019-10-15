@@ -1,5 +1,5 @@
 .form {
-	@include center(100%);
+	width: 100%;
 
 	&__control {
 		background-color: $quaternary-color;
@@ -10,7 +10,7 @@
 		input {
 			width: 100%;
 			border: none;
-			border-bottom: 1px solid #dddddd;
+			border-bottom: 1px solid $sexagenary-color;
 			padding: 5% 0;
 			margin-bottom: 8%;
 
