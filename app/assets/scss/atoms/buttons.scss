@@ -16,10 +16,14 @@
 		border-radius: 0;
 		border-top-left-radius: 40px;
 		border-bottom-left-radius: 40px;
-		padding: 5% 20% 5% 15%;
+		padding: 6% 20% 6% 15%;
 		position: absolute;
 		right: 0;
 		bottom: -10%;
+
+		@include above(m){
+			padding: 5% 20% 5% 15%;
+		}
 
 		.arrow {
 			display: inline-block;

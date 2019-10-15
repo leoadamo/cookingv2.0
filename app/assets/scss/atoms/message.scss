@@ -1,10 +1,18 @@
 .message {
-  width: 30%;
+  width: 80%;
   background-color: $tertiary-color;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 110px;
-  padding: 5.5% 4%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 90px;
+  padding: 15% 2% 15% 10%;
   position: absolute;
   right: 0;
-  bottom: 15%;
+  bottom: 10%;
+
+  @include above(m){
+    width: 30%;
+    bottom: 15%;
+    padding: 5.5% 4%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 110px;
+  }
 }
