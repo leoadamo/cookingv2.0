@@ -1,19 +1,23 @@
 .btn {
-	width: 80%;
-	@include above(l) {
-		width: 60%;
-	}
 	display: block;
 	background-color: $primary-color;
 	border: none;
 	padding: 3% 10%;
 	border-radius: 30px;
 	cursor: pointer;
-	@include align(horizontal);
 
 	&:hover {
 		background-color: $secondary-color;
 		transition: all 0.4s ease-out;
+	}
+
+	&--login {
+		width: 80%;
+		margin-top: 5%;
+		@include align(horizontal);
+		@include above(l) {
+			width: 60%;
+		}
 	}
 
 	&--start {
@@ -26,7 +30,7 @@
 		right: 0;
 		bottom: -10%;
 
-		@include above(m){
+		@include above(m) {
 			padding: 5% 20% 5% 15%;
 		}
 

@@ -2,11 +2,4 @@
 	&__title {
 		margin-bottom: 8%;
 	}
-
-	&__btn {
-		margin-top: 8%;
-		@include above(m) {
-			margin-top: 5%;
-		}
-	}
 }
