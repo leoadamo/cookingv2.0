@@ -2,14 +2,21 @@
 	width: 80%;
 	@include align(both);
 	@include above(m) {
+		@include center(60%);
+	}
+	@include above(l) {
 		@include center(30%);
 	}
 
 	.btn {
+		width: 80%;
 		margin-top: 8%;
 		@include align(horizontal);
 		@include above(m) {
 			margin-top: 5%;
+		}
+		@include above(l) {
+			width: 60%;
 		}
 	}
 }
