@@ -1,6 +1,9 @@
 .ttl-tp1 {
 	font-family: 'Raleway-Bold', sans-serif;
-	font-size: 3.5rem;
+	font-size: 2rem;
+	@include above(m){
+		font-size: 3.5rem;
+	}
 	color: $quaternary-color;
 	line-height: 1.2;
 	letter-spacing: 1px;

@@ -14,6 +14,8 @@
 
 /* ATOMS */
 @import 'atoms/buttons';
+@import 'atoms/banners';
+@import 'atoms/message';
 
 /* MOLECULES */
 @import 'molecules/list';
@@ -22,3 +24,5 @@
 @import 'molecules/contact';
 
 /* ORGANISMS */
+@import 'organisms/sign-in';
+@import 'organisms/welcome';
