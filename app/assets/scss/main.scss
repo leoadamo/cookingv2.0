@@ -10,17 +10,19 @@
 @import 'settings/typography';
 
 /* BASE */
-@import 'layout/base';
+@import 'components/layout/base';
 
 /* ATOMS */
-@import 'atoms/buttons';
-@import 'atoms/banners';
-@import 'atoms/message';
+@import 'components/atoms/buttons';
+@import 'components/atoms/banner-home';
+@import 'components/atoms/message';
+@import 'components/atoms/rounded-image';
 
 /* MOLECULES */
-@import 'molecules/list';
-@import 'molecules/form';
-@import 'molecules/contact';
+@import 'components/molecules/list';
+@import 'components/molecules/form';
+@import 'components/molecules/contact';
 
 /* ORGANISMS */
-@import 'organisms/welcome';
+@import 'components/organisms/welcome';
+@import 'components/organisms/menu';
