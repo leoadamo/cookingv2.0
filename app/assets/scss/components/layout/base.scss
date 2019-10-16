@@ -1,0 +1,28 @@
+.wrapper {
+	width: 100vw;
+	height: 100vh;
+	background-color: $sexagenary-color;
+}
+
+.container {
+	width: 80%;
+	@include align(both);
+	@include above(m) {
+		width: 60%;
+	}
+	@include above(l) {
+		width: 30%;
+	}
+}
+
+.stripe {
+	height: 50%;
+	border-bottom-left-radius: 100px;
+	background-color: $tertiary-color;
+	@include above(m) {
+		border-bottom-left-radius: 150px;
+	}
+	@include above(l) {
+		border-bottom-left-radius: 200px;
+	}
+}

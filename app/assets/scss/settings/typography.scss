@@ -1,7 +1,7 @@
 .ttl-tp1 {
 	font-family: 'Raleway-Bold', sans-serif;
 	font-size: 2rem;
-	@include above(m){
+	@include above(m) {
 		font-size: 3.5rem;
 	}
 	color: $quaternary-color;
@@ -17,6 +17,14 @@
 .ttl-tp3 {
 	font-family: 'Raleway-Medium';
 	font-size: 2rem;
+	color: $quinternary-color;
+	line-height: 1.5;
+	letter-spacing: 1px;
+}
+
+.ttl-tp4 {
+	font-family: 'Raleway-Bold';
+	font-size: 1.3rem;
 	color: $quinternary-color;
 	line-height: 1.5;
 	letter-spacing: 1px;

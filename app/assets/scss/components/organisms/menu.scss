@@ -1,0 +1,87 @@
+.menu {
+	position: relative;
+	height: 100vh;
+	background-color: $primary-color;
+	padding: 3%;
+	text-align: center;
+	box-sizing: border-box;
+
+	&__title {
+		color: $quaternary-color;
+		margin-bottom: 2%;
+	}
+
+	&__nickname {
+		color: $seventieth-color;
+		font-style: italic;
+	}
+
+	&__list {
+		text-align: right;
+		margin-top: 40%;
+	}
+
+	&__item {
+		display: block;
+		margin-bottom: 3%;
+	}
+
+	&__link {
+		position: relative;
+		display: block;
+		padding: 3%;
+		text-decoration: none;
+		text-transform: lowercase;
+
+		&:hover {
+			color: $secondary-color;
+			transition: all 0.3s ease-out;
+		}
+
+		&::after {
+			content: '';
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			margin-left: 4%;
+			@include align(vertical);
+		}
+
+		&--home::after {
+			background: url('/assets/images/icons/home.png');
+		}
+
+		&--profile::after {
+			background: url('/assets/images/icons/user.png');
+		}
+
+		&--contact::after {
+			background: url('/assets/images/icons/contact.png');
+		}
+	}
+
+	&__logout {
+		display: block;
+		position: absolute;
+		padding: 3%;
+		text-decoration: none;
+		text-transform: lowercase;
+		bottom: 5%;
+		right: calc(16px + 6%);
+
+		&:hover {
+			color: $tertiary-color;
+			transition: all 0.3s ease-out;
+		}
+
+		&::after {
+			content: '';
+			background: url('/assets/images/icons/logout.png');
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			margin-left: 4%;
+			@include align(vertical);
+		}
+	}
+}
