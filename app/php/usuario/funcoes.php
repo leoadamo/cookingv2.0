@@ -1,0 +1,29 @@
+<?php
+	// THIS FUNCTION VERIFY IF THE USER EXISTS IN DATABASE OR NOT
+	function verifyUser($pdo, $array) {
+		$sql = 'SELECT * FROM usuarios WHERE email = ? AND senha = ?';
+		try {
+			$query = $pdo->prepare($sql);
+
+			if($query->execute($array)) {
+				$user = $query->fetch();
+				return $user ? $user : false;
+			}
+		} catch (PDOException $e) {
+			echo('Erro na consulta:'.$e->getMessage());
+		}
+	}
+
+	// THIS FUNCTION INSERT A NEW USER INTO DB
+	function insertUser($pdo, $array) {
+		$sql = 'INSERT INTO usuarios (nome, e_mail, dt_nasc, telefone) VALUES (?, ?, ? ,?)';
+		try {
+			$query = $pdo->prepare($sql);
+			$user = $query->execute($array);
+
+			return $user;
+		} catch (PDOException $e) {
+			echo('Erro ao inserir novo usuário:'.$e->getMessage());
+		}
+	}
+?>
