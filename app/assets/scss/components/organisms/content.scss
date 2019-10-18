@@ -1,0 +1,49 @@
+.content {
+	float: right;
+
+	.stripe {
+		padding: 5%;
+		margin-bottom: 5%;
+	}
+
+	&__title {
+		margin-left: 5.5%;
+	}
+
+	.posts {
+		padding-left: 10%;
+		margin-bottom: 10%;
+		box-sizing: border-box;
+
+		&__item {
+			margin-bottom: 10%;
+
+			&__avatar {
+				display: inline-block;
+				margin-right: 2%;
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background: url('/assets/images/leo-spencer.jpg');
+				background-size: cover;
+			}
+
+			&__description {
+				margin-top: 2%;
+			}
+
+			.info {
+				display: inline-block;
+				margin-bottom: 2%;
+
+				&__date {
+					display: block;
+					margin-bottom: 2%;
+					color: $seventieth-color;
+					font-family: 'Raleway';
+					font-size: 0.9rem;
+				}
+			}
+		}
+	}
+}

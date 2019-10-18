@@ -1,15 +1,10 @@
 .menu {
-	position: relative;
+	position: fixed;
 	height: 100vh;
 	background-color: $primary-color;
 	padding: 3%;
 	text-align: center;
 	box-sizing: border-box;
-
-	&__title {
-		color: $quaternary-color;
-		margin-bottom: 2%;
-	}
 
 	&__nickname {
 		color: $seventieth-color;

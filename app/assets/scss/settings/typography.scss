@@ -41,6 +41,14 @@
 	text-transform: uppercase;
 }
 
+p {
+	font-family: 'Raleway-Medium';
+	font-size: 1rem;
+	line-height: 1.2rem;
+	letter-spacing: 1px;
+	color: $quinternary-color;
+}
+
 a {
 	font-family: 'Raleway-Medium';
 	font-size: 0.8rem;

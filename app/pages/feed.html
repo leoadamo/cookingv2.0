@@ -14,9 +14,9 @@
 	<body>
 		<aside class="menu col-3">
 			<figure class="photo">
-				<img class="photo__rounded" src="/assets/images/leo-spencer.jpg" alt="Foto de perfil do Autor" />
+				<img class="photo__rounded" src="/assets/images/leo-spencer.jpg" alt="Foto de perfil do Usuário que está logado no sistema." />
+				<figcaption class="photo__authorName ttl-tp4">Leo Spencer</figcaption>
 			</figure>
-			<h3 class="menu__title ttl-tp4">Leo Spencer</h3>
 			<p class="menu__nickname">@leospencer</p>
 			<ul class="menu__list">
 				<li class="menu__item"><a class="menu__link menu__link--home" title="Voltar para a homepage" href="#">Home</a></li>
@@ -25,5 +25,43 @@
 			</ul>
 			<a class="menu__logout" title="Clique para Desconectar" href="#">Desconectar</a>
 		</aside>
+		<main class="content col-9">
+			<div class="stripe">
+				<h2 class="content__title ttl-tp2">Feed</h2>
+			</div>
+			<ul class="posts col-8">
+				<li class="posts__item">
+					<span class="posts__item__avatar"></span>
+					<div class="info">
+						<h3 class="ttl-tp4">Leo Spencer</h3>
+						<time class="info__date" datetime="2019-10-17">17 Out</time>
+					</div>
+
+					<picture>
+						<source srcset="/assets/images/meat.jpg" />
+						<img src="/assets/images/meat.jpg" alt="teste" />
+					</picture>
+					<p class="posts__item__description">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore molestias animi tempora.
+					</p>
+				</li>
+
+				<li class="posts__item">
+					<span class="posts__item__avatar"></span>
+					<div class="info">
+						<h3 class="ttl-tp4">Leo Spencer</h3>
+						<time class="info__date" datetime="2019-10-17">17 Out</time>
+					</div>
+
+					<picture>
+						<source srcset="/assets/images/pizza.jpg" />
+						<img src="/assets/images/pizza.jpg" alt="teste" />
+					</picture>
+					<p class="posts__item__description">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore molestias animi tempora.
+					</p>
+				</li>
+			</ul>
+		</main>
 	</body>
 </html>
