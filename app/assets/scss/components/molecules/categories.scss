@@ -22,7 +22,7 @@
 		margin-bottom: 5%;
 
 		@include below(m) {
-			@include column(1/2, $gutter: 0);
+			@include span(1/2);
 		}
 
 		&__name {
