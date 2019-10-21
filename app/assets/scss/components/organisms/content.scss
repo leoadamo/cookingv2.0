@@ -1,5 +1,6 @@
 .content {
 	float: right;
+	margin-right: 0;
 
 	.stripe {
 		padding: 5%;
@@ -24,8 +25,9 @@
 				width: 40px;
 				height: 40px;
 				border-radius: 50%;
-				background: url('/assets/images/leo-spencer.jpg');
+				background: url('../images/leo-spencer.jpg');
 				background-size: cover;
+				box-shadow: 1px 2px 6px 1px rgba(0, 0, 0, 0.4);
 			}
 
 			&__description {

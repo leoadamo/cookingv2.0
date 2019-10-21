@@ -43,15 +43,15 @@
 		}
 
 		&--home::after {
-			background: url('/assets/images/icons/home.png');
+			background: url('../images/icons/home.png');
 		}
 
 		&--profile::after {
-			background: url('/assets/images/icons/user.png');
+			background: url('../images/icons/user.png');
 		}
 
 		&--contact::after {
-			background: url('/assets/images/icons/contact.png');
+			background: url('../images/icons/contact.png');
 		}
 	}
 
@@ -71,7 +71,7 @@
 
 		&::after {
 			content: '';
-			background: url('/assets/images/icons/logout.png');
+			background: url('../images/icons/logout.png');
 			display: inline-block;
 			width: 16px;
 			height: 16px;

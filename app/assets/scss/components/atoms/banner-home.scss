@@ -1,11 +1,11 @@
 .banner {
-  width: 100%;
-  height: 80%;
-  background: url('/assets/images/banner-welcome.jpg') no-repeat center;
-  background-size: cover;
+	width: 100%;
+	height: 80%;
+	background: url('../images/banner-welcome.jpg') no-repeat center;
+	background-size: cover;
 
-  @include above(m){
-    width: 100%;
-    height: 100%;
-  }
+	@include above(m) {
+		width: 100%;
+		height: 100%;
+	}
 }
