@@ -1,0 +1,25 @@
+.categories {
+	text-align: center;
+
+	&__title {
+		font-weight: bold;
+	}
+
+	&__list {
+		padding-top: 3.5%;
+	}
+
+	&__type {
+		position: relative;
+		margin-bottom: 5%;
+
+		&__img {
+			width: 150px;
+			height: 150px;
+			object-fit: cover;
+			margin: 15% auto 0;
+			border-radius: 50%;
+			box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.3);
+		}
+	}
+}
