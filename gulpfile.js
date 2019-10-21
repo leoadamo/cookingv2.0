@@ -8,6 +8,7 @@ const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const cache = require('gulp-cache');
+const del = require('del');
 const bs = require('browser-sync').create();
 
 /* Levantando um server no browser */
@@ -53,12 +54,13 @@ function useRef() {
 function images() {
 	return src('app/assets/images/**/*.+(png|jpg|gif|svg)')
 		.pipe(
-			imagemin([
-				imageminMozjpeg({
-					quality: 70
-				})
-			]),
-			{ verbose: true }
+			cache(
+				imagemin([
+					imageminMozjpeg({
+						quality: 70
+					})
+				])
+			)
 		)
 		.pipe(dest('dist/assets/images'));
 }
@@ -78,6 +80,16 @@ function watchFiles() {
 	watch('app/assets/js/**/*.js', bsReload);
 }
 
+function clearCache(done) {
+	return cache.clearAll(done);
+}
+
+function clearDist(done) {
+	done();
+	return del.sync('dist/');
+}
+
 /* Exportando Tasks */
 exports.default = series(browserSync, compileSass, watchFiles);
 exports.build = series(useRef, fonts, images, favicon);
+exports.clear = series(clearCache, clearDist);
