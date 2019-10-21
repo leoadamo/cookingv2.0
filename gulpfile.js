@@ -53,13 +53,11 @@ function useRef() {
 function images() {
 	return src('app/assets/images/**/*.+(png|jpg|gif|svg)')
 		.pipe(
-			cache(
-				imagemin([
-					imageminMozjpeg({
-						quality: 70
-					})
-				])
-			),
+			imagemin([
+				imageminMozjpeg({
+					quality: 70
+				})
+			]),
 			{ verbose: true }
 		)
 		.pipe(dest('dist/assets/images'));
