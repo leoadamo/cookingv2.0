@@ -1,10 +1,20 @@
 .posts {
 	padding-left: 10%;
+	padding-right: 10%;
 	margin-bottom: 10%;
 	box-sizing: border-box;
 
+	@include above(m) {
+		@include column(8/12);
+		padding-right: 0;
+	}
+
 	&__item {
-		margin-bottom: 10%;
+		margin-bottom: 20%;
+
+		@include above(m) {
+			margin-bottom: 10%;
+		}
 
 		&__avatar {
 			display: inline-block;
@@ -18,7 +28,11 @@
 		}
 
 		&__description {
-			margin-top: 2%;
+			margin-top: 5%;
+
+			@include above(m) {
+				margin-top: 2%;
+			}
 		}
 
 		.info {
@@ -27,10 +41,14 @@
 
 			&__date {
 				display: block;
-				margin-bottom: 2%;
+				margin-bottom: 10%;
 				color: $seventieth-color;
 				font-family: 'Raleway';
 				font-size: 0.9rem;
+
+				@include above(m) {
+					margin-bottom: 2%;
+				}
 			}
 		}
 	}

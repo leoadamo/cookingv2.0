@@ -24,29 +24,35 @@
 
 .ttl-tp4 {
 	font-family: 'Raleway-Bold';
-	font-size: 1.3rem;
+	font-size: 0.9rem;
 	color: $quinternary-color;
 	line-height: 1.5;
 	letter-spacing: 1px;
+	@include above(m) {
+		font-size: 1.3rem;
+	}
 }
 
 .btn {
 	font-family: 'Raleway-Bold';
 	font-size: 0.8rem;
-	@include above(m) {
-		font-size: 0.9rem;
-	}
 	letter-spacing: 1px;
 	color: $quaternary-color;
 	text-transform: uppercase;
+	@include above(m) {
+		font-size: 0.9rem;
+	}
 }
 
 p {
 	font-family: 'Raleway-Medium';
-	font-size: 1rem;
-	line-height: 1.2rem;
+	font-size: 0.9rem;
+	line-height: 1.2;
 	letter-spacing: 1px;
 	color: $quinternary-color;
+	@include above(m) {
+		font-size: 1rem;
+	}
 }
 
 a {
