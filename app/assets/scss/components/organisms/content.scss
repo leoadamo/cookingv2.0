@@ -8,16 +8,14 @@
 	}
 
 	.stripe {
-		padding: 8%;
+		position: relative;
+		width: 100%;
+		padding: 10%;
 		margin-bottom: 10%;
 
 		@include above(m) {
 			padding: 5%;
 			margin-bottom: 5%;
 		}
-	}
-
-	&__title {
-		margin-left: 5.5%;
 	}
 }

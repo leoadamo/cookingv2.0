@@ -15,6 +15,7 @@
 
 	&__list {
 		padding-top: 3.5%;
+		@include clearfix();
 	}
 
 	&__type {
