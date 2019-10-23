@@ -17,5 +17,11 @@
 			padding: 5%;
 			margin-bottom: 5%;
 		}
+
+		&__title {
+			@include above(m) {
+				margin-left: 5%;
+			}
+		}
 	}
 }
