@@ -1,6 +1,5 @@
 /* Import dos pacotes instalados com NPM */
 const { src, dest, watch, series } = require('gulp');
-// const gulpIf = require('gulp-if');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
