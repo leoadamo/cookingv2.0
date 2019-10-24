@@ -125,4 +125,4 @@ function clearDist(done) {
 /* Exportando Tasks */
 exports.default = series(browserSync, styles, watchFiles);
 //exports.build = series(useRef, fonts, images, favicon);
-//exports.clear = series(clearCache, clearDist);
+exports.clear = series(clearCache, clearDist);
