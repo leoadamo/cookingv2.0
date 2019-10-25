@@ -14,7 +14,7 @@ export default () => {
 		},
 		functions: {
 			openMenu: e => {
-				e.preventdefault();
+				e.preventDefault();
 
 				toggleMenu.cache.hamburger.toggleClass('is-active');
 			}
