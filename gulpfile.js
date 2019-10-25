@@ -1,56 +1,55 @@
-/* Import dos pacotes instalados com NPM */
+/* PLUGINS */
 const { src, dest, watch, series } = require('gulp');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
-// const useref = require('gulp-useref');
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
-const imageminMozjpeg = require('imagemin-mozjpeg');
 const cache = require('gulp-cache');
 const rename = require('gulp-rename');
+const browserify = require('browserify');
+const babelify = require('babelify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const imageminMozjpeg = require('imagemin-mozjpeg');
 const del = require('del');
 const bs = require('browser-sync').create();
-
-// BASE PATH
-const base = 'app/';
 
 // DIST
 const dist = 'dist/';
 
 // STYLES PATHS
-const styleSRC = 'app/assets/scss/main.scss';
-const styleOUT = 'app/assets/css/';
-const styleWATCH = 'app/assets/scss/**/*.scss';
+const styleSRC = 'assets/scss/main.scss';
+const styleOUT = 'dist/assets/css/';
+const styleWATCH = 'assets/scss/**/*.scss';
 
 // JS PATHS
-const jsSRC = 'app/assets/js/**/*.js';
-const jsWATCH = 'app/assets/js/**/*.js';
+const jsSRC = 'main.js';
+const jsFOLDER = 'assets/js/';
+const jsOUT = 'dist/assets/js/';
+const jsFILES = [jsSRC]; // IN CASE WE HAVE MULTIPLE JS BUNDLES: FRONT-END BUNDLE / BACK-END BUNDLE
+const jsWATCH = 'assets/js/**/*.js';
 
 // HTML AND ASSETS
-const htmlSRC = 'app/pages/*.html';
-const imagesSRC = 'app/assets/images/**/*.+(png|jpg|gif|svg)';
-const fontsSRC = 'app/assets/fonts/**/*';
+const htmlSRC = 'dist/*.html';
+const imagesSRC = 'assets/images/**/*.+(png|jpg|gif|svg)';
+const fontsSRC = 'assets/fonts/**/*';
 
-/* Levantando um server no browser */
 function browserSync(done) {
 	bs.init({
 		server: {
-			baseDir: [`${base}pages`, base],
-			index: 'index.html'
+			baseDir: dist
 		},
 		port: 3000
 	});
 	done();
 }
 
-/* Função para fazer o livereload no browser */
 function bsReload(done) {
 	bs.reload();
 	done();
 }
 
-/* Função para compilar, comprimir e injetar no browser as alterações nos arquivos SASS */
 function styles() {
 	return src(styleSRC)
 		.pipe(sourcemaps.init())
@@ -71,18 +70,29 @@ function styles() {
 		.pipe(bs.stream());
 }
 
-// function js() {}
+function js(done) {
+	jsFILES.map(entry => {
+		return browserify({
+			entries: [jsFOLDER + entry]
+		})
+			.transform(babelify, { presets: ['@babel/env'] })
+			.bundle()
+			.pipe(source(entry))
+			.pipe(
+				rename({
+					basename: 'bundle',
+					extname: '.min.js'
+				})
+			)
+			.pipe(buffer())
+			.pipe(sourcemaps.init({ loadMaps: true }))
+			.pipe(uglify())
+			.pipe(sourcemaps.write('./'))
+			.pipe(dest(jsOUT));
+	});
+	done();
+}
 
-/* Função para otimizar os assets para produção */
-// function useRef() {
-// 	return src(paths.html)
-// 		.pipe(useref())
-// 		.pipe(gulpIf('*.js', uglify()))
-// 		.pipe(gulpIf('*.css', cssnano()))
-// 		.pipe(dest(paths.dist));
-// }
-
-/* Função para minificar as imagens do projeto */
 function images() {
 	return src(imagesSRC)
 		.pipe(
@@ -101,27 +111,21 @@ function fonts() {
 	return src(fontsSRC).pipe(dest(`${dist}assets/fonts`));
 }
 
-function favicon() {
-	return src(`${base}pages/*.ico`).pipe(dest(dist));
-}
-
-/* Função para observar as mudanças nos arquivos SASS e HTML */
 function watchFiles() {
 	watch(styleWATCH, styles);
-	watch(jsWATCH, bsReload);
+	watch(jsWATCH, series(js, bsReload));
 	watch(htmlSRC, bsReload);
 }
 
 function clearCache(done) {
-	return cache.clearAll(done);
+	done();
+	return cache.clearAll();
 }
 
 function clearDist(done) {
 	done();
-	return del.sync(dist);
+	return del.sync(`${dist}assets`);
 }
 
-/* Exportando Tasks */
-exports.default = series(browserSync, styles, watchFiles);
-//exports.build = series(useRef, fonts, images, favicon);
+exports.default = series(styles, js, images, fonts, browserSync, watchFiles);
 exports.clear = series(clearCache, clearDist);
