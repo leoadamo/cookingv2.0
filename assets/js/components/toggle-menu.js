@@ -5,7 +5,7 @@ export default () => {
 		},
 		cache: {
 			hamburger: $('.js-hamburger-trigger'),
-			menu: $('js-menu-trigger')
+			menu: $('.js-menu-trigger')
 		},
 		bind: {
 			init: () => {
