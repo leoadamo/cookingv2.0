@@ -99,7 +99,7 @@ function images() {
 			cache(
 				imagemin([
 					imageminMozjpeg({
-						quality: 70
+						quality: 60
 					})
 				])
 			)

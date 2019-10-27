@@ -21,14 +21,9 @@
 	}
 
 	&__nickname {
-		width: 50%;
 		text-align: center;
 		font-style: italic;
 		color: $seventieth-color;
-
-		@include above(m) {
-			width: 100%;
-		}
 	}
 
 	&__list {
@@ -81,8 +76,13 @@
 		padding: 3%;
 		text-decoration: none;
 		text-transform: lowercase;
-		bottom: 5%;
-		right: calc(16px + 6%);
+		bottom: 12%;
+		right: calc(16px + 8%);
+
+		@include above(m) {
+			bottom: 5%;
+			right: calc(16px + 6%);
+		}
 
 		&:hover {
 			color: $tertiary-color;

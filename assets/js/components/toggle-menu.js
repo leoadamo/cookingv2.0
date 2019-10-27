@@ -18,6 +18,7 @@ export default () => {
 
 				toggleMenu.cache.hamburger.toggleClass('is-active');
 				toggleMenu.cache.menu.toggleClass('menu--open');
+				toggleMenu.cache.menu.hasClass('menu--open') ? $('body').addClass('fixed') : $('body').removeClass('fixed');
 			}
 		}
 	};
