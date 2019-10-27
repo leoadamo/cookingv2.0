@@ -3,12 +3,14 @@
 	padding: 15px 15px;
 	border: 0;
 	margin: 0;
-	right: 22%;
+	right: 6%;
 	cursor: pointer;
 	transition: opacity, filter 0.15s linear;
 	text-transform: none;
 	background-color: transparent;
 	overflow: visible;
+	outline: none;
+	z-index: 2;
 	@include align(vertical);
 
 	@include above(m) {

@@ -12,6 +12,7 @@
 		width: 100%;
 		padding: 10%;
 		margin-bottom: 10%;
+		box-sizing: border-box;
 
 		@include above(m) {
 			padding: 5%;

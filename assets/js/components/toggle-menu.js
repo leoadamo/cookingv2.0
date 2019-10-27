@@ -17,6 +17,7 @@ export default () => {
 				e.preventDefault();
 
 				toggleMenu.cache.hamburger.toggleClass('is-active');
+				toggleMenu.cache.menu.toggleClass('menu--open');
 			}
 		}
 	};
