@@ -1,0 +1,47 @@
+.btn {
+	display: block;
+	background-color: $primary-color;
+	border: none;
+	padding: 3% 10%;
+	border-radius: 30px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $secondary-color;
+		transition: all 0.4s ease-out;
+	}
+
+	&--login {
+		width: 80%;
+		margin-top: 5%;
+		@include align(horizontal);
+		@include above(l) {
+			width: 60%;
+		}
+	}
+
+	&--start {
+		position: absolute;
+		right: 0;
+		bottom: -10%;
+		padding: 6% 20% 6% 15%;
+		border-radius: 0;
+		border-top-left-radius: 40px;
+		border-bottom-left-radius: 40px;
+		text-decoration: none;
+
+		@include above(m) {
+			padding-top: 5%;
+			padding-bottom: 5%;
+		}
+
+		.arrow {
+			display: inline-block;
+			margin-left: 5%;
+			@include align(vertical);
+			width: 24px;
+			height: 24px;
+			background-image: url('../images/icons/right-arrow.png');
+		}
+	}
+}

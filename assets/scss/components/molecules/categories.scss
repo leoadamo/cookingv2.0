@@ -1,0 +1,53 @@
+.categories {
+	padding-right: 10%;
+	padding-left: 10%;
+
+	@include above(m) {
+		@include column(4/12);
+		text-align: center;
+		padding: 0;
+	}
+
+	&__title {
+		font-weight: bold;
+		text-align: center;
+	}
+
+	&__list {
+		padding-top: 3.5%;
+		@include clearfix();
+	}
+
+	&__type {
+		position: relative;
+		margin-bottom: 5%;
+		@include span(1/2);
+
+		@include above(m) {
+			width: 100%;
+		}
+
+		&__name {
+			text-align: center;
+			margin-top: 5%;
+
+			@include above(m) {
+				margin-top: 3%;
+			}
+		}
+
+		&__img {
+			width: 100px;
+			height: 100px;
+			object-fit: cover;
+			margin: 15% auto 0;
+			border-radius: 50%;
+			box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.3);
+
+			@include above(m) {
+				width: 150px;
+				height: 150px;
+			}
+		}
+	}
+}

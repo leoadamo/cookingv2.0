@@ -1,0 +1,28 @@
+.list {
+	text-align: center;
+	@include clearfix();
+
+	&__item {
+		@include span(1/2);
+
+		&__link {
+			display: block;
+			text-decoration: none;
+			padding: 4%;
+
+			&:after {
+				content: '';
+				display: block;
+				margin: 5% auto 0;
+				width: 0;
+				height: 2px;
+				background-color: $quaternary-color;
+				transition: width 0.3s;
+			}
+
+			&:hover::after {
+				width: 70%;
+			}
+		}
+	}
+}

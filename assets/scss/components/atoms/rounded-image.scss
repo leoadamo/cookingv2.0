@@ -1,0 +1,16 @@
+.photo {
+	display: block;
+
+	&__rounded {
+		border-radius: 50%;
+		margin: 0 auto 4%;
+		border: 5px solid $quaternary-color;
+		box-sizing: border-box;
+	}
+
+	&__authorName {
+		margin-bottom: 2%;
+		text-align: center;
+		color: $quaternary-color;
+	}
+}

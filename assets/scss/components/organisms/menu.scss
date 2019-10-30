@@ -1,0 +1,106 @@
+.menu {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	padding: 15%;
+	background-color: $primary-color;
+	transform: translateX(-100%);
+	box-sizing: border-box;
+
+	&--open {
+		transform: translateX(0);
+		transition: 0.2s all ease-out;
+		z-index: 1;
+	}
+
+	@include above(l) {
+		padding: 3%;
+		transform: translateX(0);
+		@include column(3/12);
+		text-align: center;
+	}
+
+	&__nickname {
+		text-align: center;
+		font-style: italic;
+		color: $seventieth-color;
+	}
+
+	&__list {
+		text-align: right;
+		margin-top: 40%;
+	}
+
+	&__item {
+		display: block;
+		margin-bottom: 3%;
+	}
+
+	&__link {
+		position: relative;
+		display: block;
+		padding: 3%;
+		text-decoration: none;
+		text-transform: lowercase;
+
+		&:hover {
+			color: $secondary-color;
+			transition: all 0.3s ease-out;
+		}
+
+		&::after {
+			content: '';
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			margin-left: 4%;
+			@include align(vertical);
+		}
+
+		&--home::after {
+			background: url('../images/icons/home.png');
+		}
+
+		&--profile::after {
+			background: url('../images/icons/user.png');
+		}
+
+		&--contact::after {
+			background: url('../images/icons/contact.png');
+		}
+	}
+
+	&__logout {
+		display: block;
+		position: absolute;
+		padding: 3%;
+		text-decoration: none;
+		text-transform: lowercase;
+		bottom: 12%;
+		right: calc(16px + 8%);
+
+		@include above(m) {
+			bottom: 5%;
+			right: calc(16px + 10%);
+		}
+
+		@include above(l) {
+			right: calc(16px + 6%);
+		}
+
+		&:hover {
+			color: $tertiary-color;
+			transition: all 0.3s ease-out;
+		}
+
+		&::after {
+			content: '';
+			background: url('../images/icons/logout.png');
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			margin-left: 4%;
+			@include align(vertical);
+		}
+	}
+}

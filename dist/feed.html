@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- TITLE -->
+		<title>Cooking: Feed</title>
+		<!-- METAS -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<!-- LINKS -->
+		<link rel="stylesheet" href="assets/css/main.min.css" />
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<aside class="menu js-menu-trigger">
+			<figure class="photo">
+				<img class="photo__rounded" src="assets/images/leo-spencer.jpg" alt="Foto de perfil do Usuário que está logado no sistema." />
+				<figcaption class="photo__authorName ttl-tp4">Leo Spencer</figcaption>
+			</figure>
+			<p class="menu__nickname">@leospencer</p>
+			<ul class="menu__list">
+				<li class="menu__item"><a class="menu__link menu__link--home" title="Voltar para a homepage" href="#">Home</a></li>
+				<li class="menu__item"><a class="menu__link menu__link--profile" title="Visitar Perfil" href="#">Perfil</a></li>
+				<li class="menu__item"><a class="menu__link menu__link--contact" title="Entre em contato" href="#">Contato</a></li>
+			</ul>
+			<a class="menu__logout" title="Clique para Desconectar" href="#">Desconectar</a>
+		</aside>
+		<main class="content">
+			<div class="stripe">
+				<h2 class="stripe__title ttl-tp2">Feed</h2>
+				<!-- MENU MOBILE -->
+				<button class="hamburger js-hamburger-trigger" type="button">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</button>
+				<!-- MENU MOBILE -->
+			</div>
+			<ul class="posts">
+				<li class="posts__item">
+					<span class="posts__item__avatar"></span>
+					<div class="info">
+						<h3 class="ttl-tp4">Leo Spencer</h3>
+						<time class="info__date" datetime="2019-10-17">17 Out</time>
+					</div>
+
+					<picture>
+						<source srcset="assets/images/meat.jpg" />
+						<img src="assets/images/meat.jpg" alt="teste" />
+					</picture>
+					<p class="posts__item__description">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore molestias animi tempora.
+					</p>
+				</li>
+
+				<li class="posts__item">
+					<span class="posts__item__avatar"></span>
+					<div class="info">
+						<h3 class="ttl-tp4">Leo Spencer</h3>
+						<time class="info__date" datetime="2019-10-17">17 Out</time>
+					</div>
+
+					<picture>
+						<source srcset="assets/images/pizza.jpg" />
+						<img src="assets/images/pizza.jpg" alt="teste" />
+					</picture>
+					<p class="posts__item__description">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore molestias animi tempora.
+					</p>
+				</li>
+			</ul>
+			<div class="categories">
+				<h2 class="categories__title ttl-tp3">Categorias</h2>
+				<ul class="categories__list">
+					<li class="categories__type">
+						<picture>
+							<source srcset="assets/images/vegan-food.jpg" />
+							<img class="categories__type__img" src="assets/images/vegan-food.jpg" alt="" />
+						</picture>
+						<h3 class="categories__type__name ttl-tp4">Vegetarianos</h3>
+					</li>
+					<li class="categories__type">
+						<picture>
+							<source srcset="assets/images/meat2.jpg" />
+							<img class="categories__type__img" src="assets/images/meat2.jpg" alt="" />
+						</picture>
+						<h3 class="categories__type__name ttl-tp4">Carnes</h3>
+					</li>
+
+					<li class="categories__type">
+						<picture>
+							<source srcset="assets/images/candies.jpg" />
+							<img class="categories__type__img" src="assets/images/candies.jpg" alt="" />
+						</picture>
+						<h3 class="categories__type__name ttl-tp4">Sobremesas</h3>
+					</li>
+
+					<li class="categories__type">
+						<picture>
+							<source srcset="assets/images/cake.jpg" />
+							<img class="categories__type__img" src="assets/images/cake.jpg" alt="" />
+						</picture>
+						<h3 class="categories__type__name ttl-tp4">Bolos</h3>
+					</li>
+				</ul>
+			</div>
+		</main>
+
+		<script src="assets/js/bundle.min.js"></script>
+	</body>
+</html>
