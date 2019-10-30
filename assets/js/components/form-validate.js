@@ -18,6 +18,7 @@ export default () => {
 		functions: {
 			validate: form => {
 				$(form).validate({
+					validClass: 'success',
 					rules: {
 						email: {
 							required: true,
@@ -33,8 +34,8 @@ export default () => {
 							equalTo: '#password'
 						},
 						name: {
-							required: true
-							// lettersonly: true
+							required: true,
+							lettersonly: true
 						},
 						about: {
 							required: true
@@ -56,8 +57,8 @@ export default () => {
 							equalTo: 'As senhas não conferem'
 						},
 						name: {
-							required: 'Por favor, preencha este campo'
-							// lettersonly: 'Por favor, digite apenas letras'
+							required: 'Por favor, preencha este campo',
+							lettersonly: 'Por favor, digite apenas letras'
 						},
 						about: {
 							required: 'Por favor, preencha este campo'

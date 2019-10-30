@@ -13,23 +13,29 @@
 			border-bottom: 1px solid $sexagenary-color;
 			padding: 5% 0;
 			margin-bottom: 3%;
+			transition: 0.1s border-color ease-out;
 
-			&.error:focus {
-				outline-color: $eightieth-color;
+			&:focus {
+				outline: none;
 			}
 
-			&::placeholder {
-				opacity: 0.3;
+			&.error {
+				color: $eightieth-color;
+				border-color: $eightieth-color;
+			}
+
+			&.success {
+				border-color: $primary-color;
 			}
 		}
 
 		label.error {
 			display: block;
+			margin-bottom: 5%;
 			font-family: 'Raleway-Medium';
 			font-size: 0.8rem;
 			text-align: left;
 			color: $eightieth-color;
-			margin-bottom: 5%;
 		}
 	}
 }
