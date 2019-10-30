@@ -23,13 +23,13 @@
 							<a class="list__item__link" href="cadastro.html" title="Cadastre-se para acessar">Registre-se</a>
 						</li>
 					</ul>
-					<form class="form js-register-trigger">
+					<form class="form js-register-trigger" autocomplete="off">
 						<fieldset class="form__control">
-							<input type="email" name="email" placeholder="e-mail" required />
-							<input type="password" name="senha" placeholder="senha" required />
-							<input type="password" name="confirma_senha" placeholder="confirme a senha" required />
+							<input type="email" name="email" id="email" placeholder="seuemail@provedor.com" />
+							<input type="password" name="password" id="password" placeholder="senha" />
+							<input type="password" name="confirm_password" id="confirm_password" placeholder="confirme sua senha" />
 						</fieldset>
-						<button class="btn btn--login">Continuar</button>
+						<button type="submit" class="btn btn--login">Continuar</button>
 					</form>
 				</div>
 			</div>

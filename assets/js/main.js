@@ -1,5 +1,6 @@
 // VENDOR
 import './vendor/jquery';
+import jqueryValidation from 'jquery-validation';
 
 // COMPONENTS
 import toggleMenu from './components/toggle-menu';

@@ -12,11 +12,24 @@
 			border: none;
 			border-bottom: 1px solid $sexagenary-color;
 			padding: 5% 0;
-			margin-bottom: 8%;
+			margin-bottom: 3%;
+
+			&.error:focus {
+				outline-color: $eightieth-color;
+			}
 
 			&::placeholder {
 				opacity: 0.3;
 			}
+		}
+
+		label.error {
+			display: block;
+			font-family: 'Raleway-Medium';
+			font-size: 0.8rem;
+			text-align: left;
+			color: $eightieth-color;
+			margin-bottom: 5%;
 		}
 	}
 }
