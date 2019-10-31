@@ -6,7 +6,7 @@
 	require_once('../connect.php');
 	require_once('../usuario/funcoes.php');
 
-	$action = $_SERVER['QUERY_STRING'];
+	$action = $_POST['method'];
 	$json = file_get_contents('php://input');
 	$data = json_decode($json);
 
