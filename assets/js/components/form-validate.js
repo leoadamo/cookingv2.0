@@ -1,19 +1,17 @@
 export default () => {
-	var form = {
+	let Form = {
 		init: () => {
-			form.bind.init.call();
+			Form.bind.call();
 		},
 		cache: {
 			login: $('.js-login-trigger'),
 			register: $('.js-register-trigger'),
 			contact: $('.js-contact-trigger')
 		},
-		bind: {
-			init: () => {
-				Object.keys(form.cache).forEach(key => {
-					form.functions.validate(form.cache[key]);
-				});
-			}
+		bind: () => {
+			$.each(Form.cache, key => {
+				Form.functions.validate(Form.cache[key]);
+			});
 		},
 		functions: {
 			validate: form => {
@@ -73,5 +71,5 @@ export default () => {
 		}
 	};
 
-	form.init.call();
+	Form.init.call();
 };
