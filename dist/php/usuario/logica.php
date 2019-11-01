@@ -2,30 +2,30 @@
 	header('Access-Control-Allow-Methods: *');
 	header('Access-Control-Allow-Origin: *');
 	header('Access-Control-Allow-Headers: *');
+	header('Content-Type: charset=UTF-8');
 
 	require_once('../connect.php');
 	require_once('../usuario/funcoes.php');
 
-	$action = $_POST['method'];
-	$json = file_get_contents('php://input');
-	$data = json_decode($json);
+	$data = json_decode(file_get_contents('php://input'));
 
-	switch ($action) {
+	switch ($data->method) {
 		case 'verify':
-			$email = $data->e_mail;
-			$password = $data->senha;
-			$passEncryption = base64_encode($password);
-			$array = array($email, $passEncryption);
+			$email = $data->email;
+			$password = $data->password;
+			//$passEncryption = base64_encode($password);
+			$array = array($email, $password);
 			$user = verifyUser($pdo, $array);
 
-			// VERIFICAR ESSA VALIDAÇÃO NA PRÓXIMA AULA
 			if($user) {
 				session_start();
-				$_SESSION['logged'] = true;
-				$_SESSION['id'] = $user['id'];
-				$_SESSION['name'] = $user['nome'];
+				$logged = true;
+				$_SESSION['user'] = $user;
+
 			} else {
-				echo('Usuário Inexistente!'); // VERIFICAR COMO RETORNAR O ERRO AO FRONT
+				$message = 'Usuário não cadastrado no sistema!';
+
+				echo(json_encode(['msg' => $message]));
 			}
 			break;
 

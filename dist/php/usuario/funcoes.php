@@ -1,12 +1,12 @@
 <?php
 	// THIS FUNCTION VERIFY IF THE USER EXISTS IN DATABASE OR NOT
 	function verifyUser($pdo, $array) {
-		$sql = 'SELECT * FROM usuarios WHERE email = ? AND senha = ?';
+		$sql = 'SELECT * FROM usuarios WHERE e_mail = ? AND senha = ?';
 		try {
 			$query = $pdo->prepare($sql);
 
 			if($query->execute($array)) {
-				$user = $query->fetch();
+				$user = $query->fetch(PDO::FETCH_ASSOC);
 				return $user ? $user : false;
 			}
 		} catch (PDOException $e) {
