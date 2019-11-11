@@ -1,8 +1,8 @@
 <?php
+	header('Content-Type: charset="utf-8"');
 	header('Access-Control-Allow-Methods: *');
 	header('Access-Control-Allow-Origin: *');
 	header('Access-Control-Allow-Headers: *');
-	header('Content-Type: charset=UTF-8');
 
 	require_once('../connect.php');
 	require_once('../usuario/funcoes.php');
@@ -18,13 +18,15 @@
 			$user = verifyUser($pdo, $array);
 
 			if($user) {
-				session_start();
-				$logged = true;
-				$_SESSION['user'] = $user;
-
+				$credentials = array(
+					'id' => $user['id_usuario'],
+					'name' => $user['nome'],
+					'login' => $user['e_mail']
+				);
+				setcookie('loginCredentials', json_encode($credentials), time() + 3600, '127.0.0.1');
+				echo(json_encode($user));
 			} else {
 				$message = 'Usuário não cadastrado no sistema!';
-
 				echo(json_encode(['msg' => $message]));
 			}
 			break;

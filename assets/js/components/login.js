@@ -91,6 +91,7 @@ export default () => {
 					contentType: 'application/json; charset=utf-8;',
 					success: response => {
 						console.log(response);
+						// window.location.replace('/feed.html');
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);
