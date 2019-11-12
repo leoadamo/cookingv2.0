@@ -90,6 +90,7 @@ export default () => {
 					dataType: 'json',
 					contentType: 'application/json; charset=utf-8;',
 					success: response => {
+						Login.functions.setCookie('login', response.user.id, 1);
 						response.isLogged ? window.location.replace('/feed.html') : console.log(response.msg);
 					},
 					error: (xhr, thrownError) => {
@@ -102,6 +103,14 @@ export default () => {
 				$(form)
 					.find('*')
 					.removeClass('success');
+			},
+			setCookie: (name, value, days) => {
+				var d = new Date;
+				d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
+				document.cookie = `${name} = ${value} ;path=/;expires= ${d.toGMTString()}`;
+			},
+			deleteCookie: name => {
+				Login.functions.setCookie(name, '', -1);
 			}
 		}
 	};

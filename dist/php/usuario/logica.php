@@ -1,5 +1,5 @@
 <?php
-	header('Content-Type: charset="utf-8"');
+	header('Content-Type: application/json; charset="utf-8"');
 	header('Access-Control-Allow-Methods: *');
 	header('Access-Control-Allow-Origin: *');
 	header('Access-Control-Allow-Headers: *');
@@ -23,8 +23,7 @@
 					'name' => $user['nome'],
 					'login' => $user['e_mail']
 				);
-				//setcookie('loginCredentials', json_encode($credentials), 0, '/');
-				echo(json_encode(['isLogged' => true]));
+				echo(json_encode(['isLogged' => true, 'user' => $credentials]));
 			} else {
 				$message = 'Usuário não cadastrado no sistema!';
 				echo(json_encode(['msg' => $message]));

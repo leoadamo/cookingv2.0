@@ -18,8 +18,7 @@
 	"homepage": "https://github.com/leoadamo/cookingv2.0#readme",
 	"dependencies": {
 		"jquery": "^3.1.1",
-		"jquery-validation": "^1.19.1",
-		"js-cookie": "^2.2.1"
+		"jquery-validation": "^1.19.1"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.6.4",
