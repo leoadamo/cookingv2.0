@@ -23,8 +23,8 @@
 					'name' => $user['nome'],
 					'login' => $user['e_mail']
 				);
-				setcookie('loginCredentials', json_encode($credentials), time() + 3600, '127.0.0.1');
-				echo(json_encode($user));
+				//setcookie('loginCredentials', json_encode($credentials), 0, '/');
+				echo(json_encode(['isLogged' => true]));
 			} else {
 				$message = 'Usuário não cadastrado no sistema!';
 				echo(json_encode(['msg' => $message]));

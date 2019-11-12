@@ -90,8 +90,7 @@ export default () => {
 					dataType: 'json',
 					contentType: 'application/json; charset=utf-8;',
 					success: response => {
-						console.log(response);
-						// window.location.replace('/feed.html');
+						response.isLogged ? window.location.replace('/feed.html') : console.log(response.msg);
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);

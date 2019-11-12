@@ -1,5 +1,5 @@
 import jquery from 'jquery';
-import Cookies from 'js-cookie';
+//import Cookies from 'js-cookie';
 import 'jquery-validation';
 import 'jquery-validation/dist/additional-methods';
 
