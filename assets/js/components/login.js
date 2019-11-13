@@ -1,5 +1,5 @@
 export default () => {
-	let Login = {
+	const Login = {
 		init: () => {
 			Login.bind.call();
 		},
@@ -71,8 +71,8 @@ export default () => {
 				});
 			},
 			verifyUser: form => {
-				let values = $(form).serializeArray();
-				let formData = {};
+				const values = $(form).serializeArray();
+				const formData = {};
 				let data;
 
 				$.each(values, (i, obj) => {
@@ -90,8 +90,10 @@ export default () => {
 					dataType: 'json',
 					contentType: 'application/json; charset=utf-8;',
 					success: response => {
-						Login.functions.setCookie('login', response.user.id, 1);
-						response.isLogged ? window.location.replace('/feed.html') : console.log(response.msg);
+						if (response.isLogged) {
+							Login.functions.setCookie('login', response.user.login, 1);
+							window.location.replace('/feed.html');
+						} else console.log(response.msg);
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);
@@ -105,7 +107,7 @@ export default () => {
 					.removeClass('success');
 			},
 			setCookie: (name, value, days) => {
-				var d = new Date;
+				const d = new Date();
 				d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
 				document.cookie = `${name} = ${value} ;path=/;expires= ${d.toGMTString()}`;
 			},

@@ -1,5 +1,5 @@
 export default () => {
-	let ToggleMenu = {
+	const ToggleMenu = {
 		init: () => {
 			ToggleMenu.bind.call();
 		},
