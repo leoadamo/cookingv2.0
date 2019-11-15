@@ -6,6 +6,7 @@ import 'jquery-validation/dist/additional-methods';
 import ToggleMenu from './components/toggle-menu';
 import Login from './components/login';
 import Auth from './components/auth';
+import Register from './components/register';
 
 window.$ = jquery;
 
@@ -14,4 +15,5 @@ $(() => {
 	Auth();
 	Login();
 	ToggleMenu();
+	Register();
 });

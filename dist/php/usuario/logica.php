@@ -31,13 +31,12 @@
 			break;
 
 		case 'insert':
-			$name = $data->nome;
-			$email = $data->e_mail;
+			$email = $data->email;
+			$senha = $data->password;
 			/* FALTA INSERIR CAMPO SENHA NO BANCO E ENCRIPTAR A SENHA AO INSERIR */
-			$born = $data->dt_nasc;
-			$phone = $data->telefone;
-			$array = array($name, $email, $born, $phone); // SENHA VAI TAMBÉM
+			$array = array($email, $senha); // SENHA VAI TAMBÉM
 			insertUser($pdo, $array);
+			echo (json_encode('Sucesso'));
 			break;
 
 		default:
