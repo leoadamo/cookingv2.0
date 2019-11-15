@@ -16,27 +16,22 @@
 			//$passEncryption = base64_encode($password);
 			$array = array($email, $password);
 			$user = verifyUser($pdo, $array);
-
-			if($user) {
-				$credentials = array(
-					'id' => $user['id_usuario'],
-					'name' => $user['nome'],
-					'login' => $user['e_mail']
-				);
-				echo(json_encode(['isLogged' => true, 'user' => $credentials]));
-			} else {
-				$message = 'Usuário não cadastrado no sistema!';
+			$user ? $credentials = array(
+				'id' => $user['id_usuario'],
+				'name' => $user['nome'],
+				'login' => $user['e_mail']
+			);
+			echo(json_encode(['isLogged' => true, 'user' => $credentials]));
+			: $message = 'Usuário não cadastrado no sistema!';
 				echo(json_encode(['msg' => $message]));
-			}
 			break;
 
 		case 'insert':
 			$email = $data->email;
 			$senha = $data->password;
-			/* FALTA INSERIR CAMPO SENHA NO BANCO E ENCRIPTAR A SENHA AO INSERIR */
-			$array = array($email, $senha); // SENHA VAI TAMBÉM
-			insertUser($pdo, $array);
-			echo (json_encode('Sucesso'));
+			$array = array($email, $senha);
+			$user = insertUser($pdo, $array);
+			$user ? echo(json_encode(['success' => true])) : echo(json_encode(['msg' => 'Erro ao inserir usuário!']));
 			break;
 
 		default:

@@ -27,7 +27,7 @@ export default () => {
 							required: true,
 							minlength: 5,
 							equalTo: '#password'
-						},
+						}
 					},
 					messages: {
 						email: 'Por favor, digite um endereço de e-mail válido',
@@ -39,7 +39,7 @@ export default () => {
 							required: 'Por favor, forneça sua senha',
 							minlength: 'Sua senha deve conter no mínimo 5 caracteres',
 							equalTo: 'As senhas não conferem'
-						},
+						}
 					},
 					submitHandler: (form, e) => {
 						e.preventDefault();
@@ -60,7 +60,6 @@ export default () => {
 				formData['method'] = 'insert';
 
 				data = JSON.stringify(formData);
-				console.log(data)
 
 				$.ajax({
 					type: 'POST',
@@ -68,7 +67,7 @@ export default () => {
 					data: data,
 					contentType: 'application/json; charset=utf-8;',
 					success: response => {
-						if (response) {
+						if (response.success) {
 							window.location.replace('/login.html');
 						} else console.log(response.msg);
 					},
@@ -82,7 +81,7 @@ export default () => {
 				$(form)
 					.find('*')
 					.removeClass('success');
-			},
+			}
 		}
 	};
 
