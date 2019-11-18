@@ -16,7 +16,7 @@
 
 	// THIS FUNCTION INSERT A NEW USER INTO DB
 	function insertUser($pdo, $array) {
-		$sql = 'INSERT INTO usuarios (e_mail, senha) VALUES (?, ?)';
+		$sql = 'INSERT INTO usuarios (nome, e_mail, senha, dt_nasc, telefone) VALUES (?, ?, ?, ?, ?)';
 		try {
 			$query = $pdo->prepare($sql);
 			$user = $query->execute($array);

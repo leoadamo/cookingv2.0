@@ -15,6 +15,19 @@ export default () => {
 				Register.cache.form.validate({
 					validClass: 'success',
 					rules: {
+						name: {
+							required: true,
+							lettersonly: true
+						},
+						bday: {
+							required: true,
+							date: true
+						},
+						phone: {
+							required: true,
+							number: true,
+							maxlength: 11
+						},
 						email: {
 							required: true,
 							email: true
@@ -30,6 +43,12 @@ export default () => {
 						}
 					},
 					messages: {
+						name: {
+							required: 'Por favor, preencha este campo',
+							lettersonly: 'Por favor, digite apenas letras'
+						},
+						bday: 'Por favor, selecione uma data válida',
+						phone: 'Por favor, digite um número de telefone válido',
 						email: 'Por favor, digite um endereço de e-mail válido',
 						password: {
 							required: 'Por favor, forneça sua senha',
@@ -60,7 +79,7 @@ export default () => {
 				formData['method'] = 'insert';
 
 				data = JSON.stringify(formData);
-
+				console.log(data)
 				$.ajax({
 					type: 'POST',
 					url: Register.cache.server,
@@ -70,6 +89,7 @@ export default () => {
 						if (response.success) {
 							window.location.replace('/login.html');
 						} else console.log(response.msg);
+						console.log(response)
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);

@@ -13,8 +13,8 @@
 		case 'verify':
 			$email = $data->email;
 			$password = $data->password;
-			//$passEncryption = base64_encode($password);
-			$array = array($email, $password);
+			$passEncryption = base64_encode($password);
+			$array = array($email, $passEncryption);
 			$user = verifyUser($pdo, $array);
 			if($user) {
 				$credentials = array(
@@ -30,9 +30,13 @@
 			break;
 
 		case 'insert':
+			$nome = $data->name;
 			$email = $data->email;
-			$senha = $data->password;
-			$array = array($email, $senha);
+			$password = $data->password;
+			$passEncryption = base64_encode($password);
+			$dtnasc = $data->bday;
+			$phone = $data->phone;
+			$array = array($nome, $email, $passEncryption, $dtnasc, $phone);
 			$user = insertUser($pdo, $array);
 			if($user) echo(json_encode(['success' => true]));
 			else echo(json_encode(['msg' => 'Erro ao inserir usuário!']));
