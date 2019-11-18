@@ -4,7 +4,7 @@ export default () => {
 			Register.bind.call();
 		},
 		cache: {
-			server: 'http://localhost/projects/cookingv2.0/dist/php/usuario/logica.php',
+			server: 'http://localhost:8888/Projects/cookingv2.0/dist/php/usuario/logica.php',
 			form: $('.js-register-trigger')
 		},
 		bind: () => {

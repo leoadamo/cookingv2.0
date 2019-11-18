@@ -4,7 +4,7 @@ export default () => {
 			Login.bind.call();
 		},
 		cache: {
-			server: 'http://localhost/projects/cookingv2.0/dist/php/usuario/logica.php',
+			server: 'http://localhost:8888/Projects/cookingv2.0/dist/php/usuario/logica.php',
 			form: $('.js-login-trigger')
 		},
 		bind: () => {
@@ -22,14 +22,14 @@ export default () => {
 						password: {
 							required: true,
 							minlength: 5
-						},
+						}
 					},
 					messages: {
 						email: 'Por favor, digite um endereço de e-mail válido',
 						password: {
 							required: 'Por favor, forneça sua senha',
 							minlength: 'Sua senha deve conter no mínimo 5 caracteres'
-						},
+						}
 					},
 					submitHandler: (form, e) => {
 						e.preventDefault();
