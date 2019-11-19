@@ -1,13 +1,12 @@
-import jquery from 'jquery';
-import 'jquery-validation';
-import 'jquery-validation/dist/additional-methods';
+import jquery from "jquery";
+import "jquery-validation";
+import "jquery-validation/dist/additional-methods";
 
 // COMPONENTS
-import Auth from './components/auth';
-import Login from './components/login';
-import Register from './components/register';
-import ToggleMenu from './components/toggle-menu';
-import ToggleSpinner from './components/toggle-spinner';
+import Auth from "./components/auth";
+import Login from "./components/login";
+import Register from "./components/register";
+import ToggleMenu from "./components/toggle-menu";
 
 window.$ = jquery;
 
@@ -17,8 +16,4 @@ $(() => {
 	Login();
 	Register();
 	ToggleMenu();
-
-	$(window).on('load', () => {
-		ToggleSpinner();
-	});
 });
