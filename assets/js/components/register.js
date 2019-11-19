@@ -79,7 +79,7 @@ export default () => {
 				formData['method'] = 'insert';
 
 				data = JSON.stringify(formData);
-				console.log(data)
+
 				$.ajax({
 					type: 'POST',
 					url: Register.cache.server,
@@ -89,7 +89,7 @@ export default () => {
 						if (response.success) {
 							window.location.replace('/login.html');
 						} else console.log(response.msg);
-						console.log(response)
+						console.log(response);
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);

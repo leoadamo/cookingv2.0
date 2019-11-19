@@ -9,11 +9,7 @@ export default () => {
 		},
 		functions: {
 			authenticate: () => {
-				!Auth.functions.getCookie('login')
-					? window.location.pathname === '/feed.html' || window.location.pathname === '/contato.html'
-						? window.location.replace('/login.html')
-						: window.location.origin
-					: '';
+				if ((!Auth.functions.getCookie('login') && window.location.pathname === '/feed.html') || window.location.pathname === '/contato.html') window.location.replace('/login.html');
 			},
 			getCookie: name => {
 				const v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
