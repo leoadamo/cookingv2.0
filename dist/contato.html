@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<!-- TITLE -->
-		<title>Cooking: Contate-nos!</title>
-		<!-- METAS -->
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<!-- LINKS -->
-		<link rel="stylesheet" href="assets/css/main.min.css" />
-		<link rel="icon" href="favicon.ico" type="image/x-icon" />
-	</head>
-	<body>
-		<!-- LOADER STRUCTURE -->
-		<div class="spinner js-loader-trigger">
-			<div class="spinner__content">
-				<div class="spinner__content__rect1"></div>
-				<div class="spinner__content__rect2"></div>
-				<div class="spinner__content__rect3"></div>
-				<div class="spinner__content__rect4"></div>
-				<div class="spinner__content__rect5"></div>
+
+<head>
+	<!-- TITLE -->
+	<title>Cooking: Contate-nos!</title>
+	<!-- METAS -->
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<!-- LINKS -->
+	<link rel="stylesheet" href="assets/css/main.min.css" />
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+	<!-- LOADER STRUCTURE -->
+	<div class="spinner js-loader-trigger">
+		<div class="spinner__content">
+			<div class="spinner__content__rect1"></div>
+			<div class="spinner__content__rect2"></div>
+			<div class="spinner__content__rect3"></div>
+			<div class="spinner__content__rect4"></div>
+			<div class="spinner__content__rect5"></div>
+		</div>
+	</div>
+
+	<main class="wrapper">
+		<div class="stripe">
+			<div class="contact container">
+				<h2 class="contact__title ttl-tp2">Contato</h2>
+				<form class="form js-contact-trigger" autocomplete="off">
+					<fieldset class="form__control">
+						<input type="text" name="name" id="name" placeholder="digite seu nome" />
+						<input type="email" name="email" id="email" placeholder="seuemail@dominio.com" />
+						<input type="text" name="about" id="about" placeholder="assunto" />
+						<input type="text" name="message" id="message" placeholder="Mensagem aqui..." />
+					</fieldset>
+					<button type="submit" class="btn btn--login">Enviar</button>
+				</form>
 			</div>
 		</div>
+	</main>
 
-		<main class="wrapper">
-			<div class="stripe">
-				<div class="contact container">
-					<h2 class="contact__title ttl-tp2">Contato</h2>
-					<form class="form js-contact-trigger" autocomplete="off">
-						<fieldset class="form__control">
-							<input type="text" name="name" id="name" placeholder="digite seu nome" />
-							<input type="text" name="about" id="about" placeholder="assunto" />
-							<input type="text" name="message" id="message" placeholder="Mensagem aqui..." />
-						</fieldset>
-						<button type="submit" class="btn btn--login">Enviar</button>
-					</form>
-				</div>
-			</div>
-		</main>
+	<script src="./assets/js/bundle.min.js"></script>
+</body>
 
-		<script src="./assets/js/bundle.min.js"></script>
-	</body>
 </html>
