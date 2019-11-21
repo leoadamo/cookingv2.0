@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<!-- TITLE -->
-		<title>Cooking: Contate-nos!</title>
+		<title>Cooking: Intro!</title>
 		<!-- METAS -->
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,6 @@
 		<link rel="stylesheet" href="assets/css/main.min.css" />
 		<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	</head>
-
 	<body>
 		<!-- LOADER STRUCTURE -->
 		<div class="spinner js-loader-trigger">
@@ -24,19 +23,20 @@
 			</div>
 		</div>
 
-		<main class="wrapper">
-			<div class="stripe">
-				<div class="contact container">
-					<h2 class="contact__title ttl-tp2">Contato</h2>
-					<form class="form js-contact-trigger" autocomplete="off">
-						<fieldset class="form__control">
-							<input type="text" name="name" id="name" placeholder="digite seu nome" />
-							<input type="email" name="email" id="email" placeholder="seuemail@dominio.com" />
-							<input type="text" name="about" id="about" placeholder="assunto" />
-							<input type="text" name="message" id="message" placeholder="Mensagem aqui..." />
-						</fieldset>
-						<button type="submit" class="btn btn--login">Enviar</button>
-					</form>
+		<main class="wrapper wrapper--intro">
+			<div class="intro">
+				<h1 class="intro__title ttl-tp2">O que deseja fazer?</h1>
+				<div class="container">
+					<ul class="list">
+						<li class="list__item">
+							<a class="list__item__link" href="/feed.html" title="Faça seu login">Ir para o Feed</a>
+						</li>
+						<li class="list__item">
+							<a class="list__item__link" href="/contato.html" title="Cadastre-se para acessar">Enviar Mensagem</a>
+						</li>
+					</ul>
+
+					<a class="intro__logout js-logout-trigger" title="Clique para Desconectar">Desconectar</a>
 				</div>
 			</div>
 		</main>

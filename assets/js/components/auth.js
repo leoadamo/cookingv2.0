@@ -14,8 +14,8 @@ export default () => {
 				if (!Auth.functions.getCookie("login")) {
 					if (window.location.pathname === "/feed.html" || window.location.pathname === "/contato.html") {
 						window.location.replace("/login.html");
+						return;
 					}
-					return;
 				}
 				Auth.functions.toggleSpinner();
 			},
