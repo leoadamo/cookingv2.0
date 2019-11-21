@@ -11,8 +11,10 @@ export default () => {
 		},
 		functions: {
 			authenticate: () => {
-				if ((!Auth.functions.getCookie("login") && window.location.pathname === "/feed.html") || window.location.pathname === "/contato.html") {
-					window.location.replace("/login.html");
+				if (!Auth.functions.getCookie("login")) {
+					if (window.location.pathname === "/feed.html" || window.location.pathname === "/contato.html") {
+						window.location.replace("/login.html");
+					}
 					return;
 				}
 				Auth.functions.toggleSpinner();

@@ -4,8 +4,8 @@ export default () => {
 			Contact.bind.call();
 		},
 		cache: {
-			server: 'http://localhost:8888/Projects/cookingv2.0/dist/php/contato/logica.php',
-			form: $('.js-contact-trigger')
+			server: "http://localhost:8888/Projects/cookingv2.0/dist/php/contato/logica.php",
+			form: $(".js-contact-trigger")
 		},
 		bind: () => {
 			Contact.functions.validate();
@@ -13,7 +13,7 @@ export default () => {
 		functions: {
 			validate: () => {
 				Contact.cache.form.validate({
-					validClass: 'success',
+					validClass: "success",
 					rules: {
 						name: {
 							required: true,
@@ -29,22 +29,22 @@ export default () => {
 						},
 						message: {
 							required: true,
-							minlength: 20,
+							minlength: 20
 						}
 					},
 					messages: {
 						name: {
-							required: 'Por favor, preencha este campo',
-							lettersonly: 'Por favor, digite apenas letras'
+							required: "Por favor, preencha este campo",
+							lettersonly: "Por favor, digite apenas letras"
 						},
-						email: 'Por favor, digite um endereço de e-mail válido',
+						email: "Por favor, digite um endereço de e-mail válido",
 						about: {
-							required: 'Por favor, informe o assunto da mensagem',
-							minlength: 'O assunto deve conter no mínimo 5 caracteres'
+							required: "Por favor, informe o assunto da mensagem",
+							minlength: "O assunto deve conter no mínimo 5 caracteres"
 						},
 						message: {
-							required: 'Por favor, preencha esse campo',
-							minlength: 'Sua mensagem deve conter no mínimo 20 caracteres',
+							required: "Por favor, preencha esse campo",
+							minlength: "Sua mensagem deve conter no mínimo 20 caracteres"
 						}
 					},
 					submitHandler: (form, e) => {
@@ -64,16 +64,15 @@ export default () => {
 				});
 
 				data = JSON.stringify(formData);
-				console.log(data)
 
 				$.ajax({
-					type: 'POST',
+					type: "POST",
 					url: Contact.cache.server,
 					data: data,
-					contentType: 'application/json; charset=utf-8;',
+					contentType: "application/json; charset=utf-8;",
 					success: response => {
 						if (response.success) {
-							window.location.replace('/feed.html');
+							window.location.replace("/feed.html");
 						} else console.log(response.msg);
 						console.log(response);
 					},
@@ -83,10 +82,10 @@ export default () => {
 					}
 				});
 
-				$(form).trigger('reset');
+				$(form).trigger("reset");
 				$(form)
-					.find('*')
-					.removeClass('success');
+					.find("*")
+					.removeClass("success");
 			}
 		}
 	};
