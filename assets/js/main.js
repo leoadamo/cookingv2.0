@@ -7,6 +7,7 @@ import Auth from "./components/auth";
 import Login from "./components/login";
 import Register from "./components/register";
 import ToggleMenu from "./components/toggle-menu";
+import Contact from "./components/contact";
 
 window.$ = jquery;
 
@@ -16,4 +17,5 @@ $(() => {
 	Login();
 	Register();
 	ToggleMenu();
+	Contact();
 });

@@ -64,12 +64,13 @@ export default () => {
 				});
 
 				data = JSON.stringify(formData);
-
+				console.log(data);
 				$.ajax({
 					type: "POST",
 					url: Contact.cache.server,
 					data: data,
 					contentType: "application/json; charset=utf-8;",
+					dataType: 'text',
 					success: response => {
 						if (response.success) {
 							window.location.replace("/feed.html");
