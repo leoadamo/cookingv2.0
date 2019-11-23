@@ -3,10 +3,10 @@
 		$sql = 'INSERT INTO contato (nome, e_mail, assunto, mensagem) VALUES (?, ?, ?, ?)';
 		try {
 			$query = $pdo->prepare($sql);
-			$contact = $query->execute($array);
-			return $contact;
+			if($query->execute($array)) return true;
+			else return false;
 		} catch (PDOException $e) {
-			echo('Erro ao inserir novo usuário:'.$e->getMessage());
+			echo('Erro ao inserir sua mensagem:'.$e->getMessage());
 		}
 	}
 ?>

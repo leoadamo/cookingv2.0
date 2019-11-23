@@ -55,13 +55,13 @@ export default () => {
 					type: "POST",
 					url: Login.cache.server,
 					data: data,
+					contentType: false,
 					dataType: "json",
-					contentType: "application/json; charset=utf-8;",
 					success: response => {
 						if (response.isLogged) {
 							Login.functions.setCookie("login", response.user.login, 1);
 							window.location.replace("/feed.html");
-						} else console.log(response.msg);
+						} else console.log(response.message);
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);

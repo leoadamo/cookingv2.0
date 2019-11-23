@@ -25,7 +25,7 @@
 				echo(json_encode(['isLogged' => true, 'user' => $credentials]));
 			} else {
 				$message = 'Usuário não cadastrado no sistema!';
-				echo(json_encode(['msg' => $message]));
+				echo(json_encode(['isLogged' => false, 'message' => $message]));
 			}
 			break;
 
@@ -39,11 +39,11 @@
 			$array = array($nome, $email, $passEncryption, $dtnasc, $phone);
 			$user = insertUser($pdo, $array);
 			if($user) echo(json_encode(['success' => true]));
-			else echo(json_encode(['msg' => 'Erro ao inserir usuário!']));
+			else echo(json_encode(['success' => false, 'message' => 'Erro ao inserir usuário!']));
 			break;
 
 		default:
-			echo('Erro na requisição, verifique os parâmetros.');
+			echo(json_encode(['success' => false, 'message' => 'Erro na requisição, verifique os parâmetros.']));
 			break;
 	}
 ?>

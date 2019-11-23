@@ -4,8 +4,8 @@ export default () => {
 			Register.bind.call();
 		},
 		cache: {
-			server: 'http://localhost:8888/Projects/cookingv2.0/dist/php/usuario/logica.php',
-			form: $('.js-register-trigger')
+			server: "http://localhost:8888/Projects/cookingv2.0/dist/php/usuario/logica.php",
+			form: $(".js-register-trigger")
 		},
 		bind: () => {
 			Register.functions.validate();
@@ -13,7 +13,7 @@ export default () => {
 		functions: {
 			validate: () => {
 				Register.cache.form.validate({
-					validClass: 'success',
+					validClass: "success",
 					rules: {
 						name: {
 							required: true,
@@ -39,25 +39,25 @@ export default () => {
 						confirm_password: {
 							required: true,
 							minlength: 5,
-							equalTo: '#password'
+							equalTo: "#password"
 						}
 					},
 					messages: {
 						name: {
-							required: 'Por favor, preencha este campo',
-							lettersonly: 'Por favor, digite apenas letras'
+							required: "Por favor, preencha este campo",
+							lettersonly: "Por favor, digite apenas letras"
 						},
-						bday: 'Por favor, selecione uma data válida',
-						phone: 'Por favor, digite um número de telefone válido',
-						email: 'Por favor, digite um endereço de e-mail válido',
+						bday: "Por favor, selecione uma data válida",
+						phone: "Por favor, digite um número de telefone válido",
+						email: "Por favor, digite um endereço de e-mail válido",
 						password: {
-							required: 'Por favor, forneça sua senha',
-							minlength: 'Sua senha deve conter no mínimo 5 caracteres'
+							required: "Por favor, forneça sua senha",
+							minlength: "Sua senha deve conter no mínimo 5 caracteres"
 						},
 						confirm_password: {
-							required: 'Por favor, forneça sua senha',
-							minlength: 'Sua senha deve conter no mínimo 5 caracteres',
-							equalTo: 'As senhas não conferem'
+							required: "Por favor, forneça sua senha",
+							minlength: "Sua senha deve conter no mínimo 5 caracteres",
+							equalTo: "As senhas não conferem"
 						}
 					},
 					submitHandler: (form, e) => {
@@ -76,19 +76,20 @@ export default () => {
 					formData[obj.name] = obj.value;
 				});
 
-				formData['method'] = 'insert';
+				formData["method"] = "insert";
 
 				data = JSON.stringify(formData);
 
 				$.ajax({
-					type: 'POST',
+					type: "POST",
 					url: Register.cache.server,
 					data: data,
-					contentType: 'application/json; charset=utf-8;',
+					contentType: false,
+					dataType: "json",
 					success: response => {
 						if (response.success) {
-							window.location.replace('/login.html');
-						} else console.log(response.msg);
+							window.location.replace("/login.html");
+						} else console.log(response.message);
 						console.log(response);
 					},
 					error: (xhr, thrownError) => {
@@ -97,10 +98,10 @@ export default () => {
 					}
 				});
 
-				$(form).trigger('reset');
+				$(form).trigger("reset");
 				$(form)
-					.find('*')
-					.removeClass('success');
+					.find("*")
+					.removeClass("success");
 			}
 		}
 	};

@@ -30,7 +30,7 @@
 		$mail->SetLanguage("br");
 		$mail->IsSMTP();
 		$mail->isHTML(true);
-		$mail->SMTPDebug = 1; //exibe erros e mensagens, 0 não exibe nada
+		$mail->SMTPDebug = 0; //exibe erros e mensagens, 0 não exibe nada
 		$mail->SMTPAuth = true;
 		$mail->SMTPSecure = "tls";
 
@@ -233,7 +233,7 @@
 																		<tbody>
 																			<tr>
 																				<td width="100" height="46"><!--  --></td>
-																				<td width="400" height="46" style="font-size: 16px; color: #404040; letter-spacing: 0; text-align: center; line-height: 23px;">Sua mensagem foi enviado e estamos verificando. <br /> Entraremos em contato o mais rápido possível.</td>
+																				<td width="400" height="46" style="font-size: 16px; color: #404040; letter-spacing: 0; text-align: center; line-height: 23px;">Sua mensagem foi enviada e estamos verificando. <br /> Entraremos em contato o mais rápido possível.</td>
 																				<td width="100" height="46"><!--  --></td>
 																			</tr>
 																		</tbody>
@@ -377,11 +377,10 @@
 
 		if(!$mail->Send()){
 			$message = $mail->ErrorInfo;
+			echo(json_encode(['success' => false, 'message' => $message]));
 		} else {
-			$message = "Sucesso!";
+			echo(json_encode(['success' => true, 'message' => 'Seu contato foi enviado com sucesso!']));
 		}
-		echo(json_encode(['success' => true]));
 	}
-	else echo(json_encode(['msg' => 'Erro']));
-
+	else echo(json_encode(['success' => false, 'message' => 'Erro ao enviar sua mensagem, tente novamente!']));
 ?>

@@ -50,7 +50,7 @@ export default () => {
 					submitHandler: (form, e) => {
 						e.preventDefault();
 
-						Contact.functions.verifyContact(form, e);
+						Contact.functions.verifyContact(form);
 					}
 				});
 			},
@@ -69,12 +69,12 @@ export default () => {
 					type: "POST",
 					url: Contact.cache.server,
 					data: data,
-					contentType: "application/json; charset=utf-8;",
+					contentType: false,
 					dataType: "json",
 					success: response => {
 						if (response.success) {
 							window.location.replace("/feed.html");
-						} else console.log(response.msg);
+						} else console.log(response.message);
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);
