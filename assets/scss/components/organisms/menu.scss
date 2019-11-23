@@ -87,6 +87,7 @@
 		text-decoration: none;
 		text-transform: lowercase;
 		bottom: 12%;
+		cursor: pointer;
 		right: calc(16px + 8%);
 
 		@include above(m) {
