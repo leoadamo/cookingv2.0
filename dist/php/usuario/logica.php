@@ -1,45 +1,49 @@
 <?php
+	header('Content-Type: application/json; charset="utf-8"');
 	header('Access-Control-Allow-Methods: *');
 	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Headers: *');
 
 	require_once('../connect.php');
 	require_once('../usuario/funcoes.php');
 
-	$action = $_SERVER['QUERY_STRING'];
-	$json = file_get_contents('php://input');
-	$data = json_decode($json);
+	$data = json_decode(file_get_contents('php://input'));
 
-	switch ($action) {
+	switch ($data->method) {
 		case 'verify':
-			$email = $data->e_mail;
-			$password = $data->senha;
+			$email = $data->email;
+			$password = $data->password;
 			$passEncryption = base64_encode($password);
 			$array = array($email, $passEncryption);
 			$user = verifyUser($pdo, $array);
-
-			// VERIFICAR ESSA VALIDAÇÃO NA PRÓXIMA AULA
 			if($user) {
-				session_start();
-				$_SESSION['logged'] = true;
-				$_SESSION['id'] = $user['id'];
-				$_SESSION['name'] = $user['nome'];
+				$credentials = array(
+					'id' => $user['id_usuario'],
+					'name' => $user['nome'],
+					'login' => $user['e_mail']
+				);
+				echo(json_encode(['isLogged' => true, 'user' => $credentials]));
 			} else {
-				echo('Usuário Inexistente!'); // VERIFICAR COMO RETORNAR O ERRO AO FRONT
+				$message = 'Usuário não cadastrado no sistema!';
+				echo(json_encode(['isLogged' => false, 'message' => $message]));
 			}
 			break;
 
 		case 'insert':
-			$name = $data->nome;
-			$email = $data->e_mail;
-			/* FALTA INSERIR CAMPO SENHA NO BANCO E ENCRIPTAR A SENHA AO INSERIR */
-			$born = $data->dt_nasc;
-			$phone = $data->telefone;
-			$array = array($name, $email, $born, $phone); // SENHA VAI TAMBÉM
-			insertUser($pdo, $array);
+			$nome = $data->name;
+			$email = $data->email;
+			$password = $data->password;
+			$passEncryption = base64_encode($password);
+			$dtnasc = $data->bday;
+			$phone = $data->phone;
+			$array = array($nome, $email, $passEncryption, $dtnasc, $phone);
+			$user = insertUser($pdo, $array);
+			if($user) echo(json_encode(['success' => true]));
+			else echo(json_encode(['success' => false, 'message' => 'Erro ao inserir usuário!']));
 			break;
 
 		default:
-			echo('Erro na requisição, verifique os parâmetros.');
+			echo(json_encode(['success' => false, 'message' => 'Erro na requisição, verifique os parâmetros.']));
 			break;
 	}
 ?>

@@ -12,6 +12,17 @@
 		<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	</head>
 	<body>
+		<!-- LOADER STRUCTURE -->
+		<div class="spinner js-loader-trigger">
+			<div class="spinner__content">
+				<div class="spinner__content__rect1"></div>
+				<div class="spinner__content__rect2"></div>
+				<div class="spinner__content__rect3"></div>
+				<div class="spinner__content__rect4"></div>
+				<div class="spinner__content__rect5"></div>
+			</div>
+		</div>
+
 		<main class="wrapper">
 			<div class="stripe">
 				<div class="container">
@@ -25,6 +36,9 @@
 					</ul>
 					<form class="form js-register-trigger" autocomplete="off">
 						<fieldset class="form__control">
+							<input type="text" name="name" id="name" placeholder="Nome completo" />
+							<input type="date" name="bday" id="bday" placeholder="Data de nascimento" />
+							<input type="text" name="phone" id="phone" placeholder="Telefone para contato" />
 							<input type="email" name="email" id="email" placeholder="seuemail@provedor.com" />
 							<input type="password" name="password" id="password" placeholder="senha" />
 							<input type="password" name="confirm_password" id="confirm_password" placeholder="confirme sua senha" />

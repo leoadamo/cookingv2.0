@@ -1,14 +1,21 @@
-// VENDOR
-import './vendor/jquery';
-import 'jquery-validation';
-import 'jquery-validation/dist/additional-methods';
+import jquery from "jquery";
+import "jquery-validation";
+import "jquery-validation/dist/additional-methods";
 
 // COMPONENTS
-import toggleMenu from './components/toggle-menu';
-import formValidate from './components/form-validate';
+import Auth from "./components/auth";
+import Login from "./components/login";
+import Register from "./components/register";
+import ToggleMenu from "./components/toggle-menu";
+import Contact from "./components/contact";
+
+window.$ = jquery;
 
 // FUNCTIONS
 $(() => {
-	toggleMenu();
-	formValidate();
+	Auth();
+	Login();
+	Register();
+	ToggleMenu();
+	Contact();
 });

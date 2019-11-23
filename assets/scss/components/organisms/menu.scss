@@ -4,7 +4,7 @@
 	height: 100vh;
 	padding: 15%;
 	background-color: $primary-color;
-	transform: translateX(-100%);
+	transform: translateX(100%);
 	box-sizing: border-box;
 
 	&--open {
@@ -28,12 +28,22 @@
 
 	&__list {
 		text-align: right;
-		margin-top: 40%;
+		margin-top: 20%;
+		@include above(m) {
+			margin-top: 2%;
+		}
+
+		@include above(l) {
+			margin-top: 40%;
+		}
 	}
 
 	&__item {
 		display: block;
-		margin-bottom: 3%;
+		margin-bottom: 2%;
+		@include above(l) {
+			margin-bottom: 4%;
+		}
 	}
 
 	&__link {
@@ -49,7 +59,7 @@
 		}
 
 		&::after {
-			content: '';
+			content: "";
 			display: inline-block;
 			width: 16px;
 			height: 16px;
@@ -58,15 +68,15 @@
 		}
 
 		&--home::after {
-			background: url('../images/icons/home.png');
+			background: url("../images/icons/home.png");
 		}
 
 		&--profile::after {
-			background: url('../images/icons/user.png');
+			background: url("../images/icons/user.png");
 		}
 
 		&--contact::after {
-			background: url('../images/icons/contact.png');
+			background: url("../images/icons/contact.png");
 		}
 	}
 
@@ -77,6 +87,7 @@
 		text-decoration: none;
 		text-transform: lowercase;
 		bottom: 12%;
+		cursor: pointer;
 		right: calc(16px + 8%);
 
 		@include above(m) {
@@ -94,8 +105,8 @@
 		}
 
 		&::after {
-			content: '';
-			background: url('../images/icons/logout.png');
+			content: "";
+			background: url("../images/icons/logout.png");
 			display: inline-block;
 			width: 16px;
 			height: 16px;

@@ -2,6 +2,10 @@
 	width: 100vw;
 	height: 100vh;
 	background-color: $sexagenary-color;
+
+	&--intro {
+		background-color: $tertiary-color;
+	}
 }
 
 .container {
@@ -25,8 +29,4 @@
 	@include above(l) {
 		border-bottom-left-radius: 200px;
 	}
-}
-
-.fixed {
-	overflow: hidden;
 }

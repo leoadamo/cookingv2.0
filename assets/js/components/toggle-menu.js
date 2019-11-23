@@ -1,27 +1,26 @@
 export default () => {
-	var toggleMenu = {
+	const ToggleMenu = {
 		init: () => {
-			toggleMenu.bind.init.call();
+			ToggleMenu.bind.call();
 		},
 		cache: {
-			hamburger: $('.js-hamburger-trigger'),
-			menu: $('.js-menu-trigger')
+			hamburger: $(".js-hamburger-trigger"),
+			menu: $(".js-menu-trigger"),
+			body: $("body")
 		},
-		bind: {
-			init: () => {
-				toggleMenu.cache.hamburger.on('click', toggleMenu.functions.openMenu);
-			}
+		bind: () => {
+			ToggleMenu.cache.hamburger.on("click", ToggleMenu.functions.openMenu);
 		},
 		functions: {
 			openMenu: e => {
 				e.preventDefault();
 
-				toggleMenu.cache.hamburger.toggleClass('is-active');
-				toggleMenu.cache.menu.toggleClass('menu--open');
-				toggleMenu.cache.menu.hasClass('menu--open') ? $('body').addClass('fixed') : $('body').removeClass('fixed');
+				ToggleMenu.cache.hamburger.toggleClass("is-active");
+				ToggleMenu.cache.menu.toggleClass("menu--open");
+				ToggleMenu.cache.menu.hasClass("menu--open") ? ToggleMenu.cache.body.removeClass("has-overflow") : ToggleMenu.cache.body.addClass("has-overflow");
 			}
 		}
 	};
 
-	toggleMenu.init.call();
+	ToggleMenu.init.call();
 };

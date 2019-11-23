@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 11, 2019 at 01:30 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.1.32
+-- Tempo de geração: 20-Nov-2019 às 03:25
+-- Versão do servidor: 10.4.6-MariaDB
+-- versão do PHP: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,92 +19,112 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cookingv2.0`
+-- Banco de dados: `cookingv2.0`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comentario`
+-- Estrutura da tabela `contato`
 --
 
-CREATE TABLE `comentario` (
-  `id_coment` int(11) NOT NULL,
-  `conteudo` varchar(255) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
-  `id_publ` int(11) DEFAULT NULL
+CREATE TABLE `contato` (
+  `id_contato` int(5) NOT NULL,
+  `nome` varchar(30) NOT NULL,
+  `e_mail` varchar(100) NOT NULL,
+  `assunto` varchar(50) NOT NULL,
+  `mensagem` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `contato`
+--
+
+INSERT INTO `contato` (`id_contato`, `nome`, `e_mail`, `assunto`, `mensagem`) VALUES
+(1, 'ssssss', 'nathalia@lkdjfskd', 'aaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `posts`
+--
+
+CREATE TABLE `posts` (
+  `id_post` int(5) NOT NULL,
+  `titulo` varchar(30) NOT NULL,
+  `categoria` varchar(20) NOT NULL,
+  `descricao` varchar(55) NOT NULL,
+  `imagem` varchar(100) NOT NULL,
+  `texto` varchar(355) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `publicacao`
+-- Estrutura da tabela `usuarios`
 --
 
-CREATE TABLE `publicacao` (
-  `id_publ` int(11) NOT NULL,
-  `titulo` varchar(60) DEFAULT NULL,
-  `texto` varchar(255) DEFAULT NULL,
-  `imagem` varchar(255) DEFAULT NULL,
-  `dt_publ` date DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `usuario`
---
-
-CREATE TABLE `usuario` (
+CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
-  `nome` varchar(60) DEFAULT NULL,
-  `e_mail` varchar(50) DEFAULT NULL,
-  `dt_nasc` date DEFAULT NULL,
-  `telefone` varchar(10) DEFAULT NULL
+  `nome` varchar(60) NOT NULL,
+  `e_mail` varchar(50) NOT NULL,
+  `senha` varchar(40) NOT NULL,
+  `dt_nasc` date NOT NULL,
+  `telefone` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `nome`, `e_mail`, `senha`, `dt_nasc`, `telefone`) VALUES
+(1, 'Leonardo Adamoli', 'leo.adamoli@gmail.com', '12345', '1992-11-28', '981336558'),
+(4, 'Nathalia', 'nathalia.gm1@gmail.com', 'MTIzNDU2', '1999-04-15', '53984397147'),
+(5, 'Teste', 'teste@teste.com', 'MTUxNTU=', '2015-10-21', '53985412563');
+
+--
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `comentario`
+-- Índices para tabela `contato`
 --
-ALTER TABLE `comentario`
-  ADD PRIMARY KEY (`id_coment`),
-  ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_publ` (`id_publ`);
+ALTER TABLE `contato`
+  ADD PRIMARY KEY (`id_contato`);
 
 --
--- Indexes for table `publicacao`
+-- Índices para tabela `posts`
 --
-ALTER TABLE `publicacao`
-  ADD PRIMARY KEY (`id_publ`),
-  ADD KEY `id_usuario` (`id_usuario`);
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id_post`);
 
 --
--- Indexes for table `usuario`
+-- Índices para tabela `usuarios`
 --
-ALTER TABLE `usuario`
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- Constraints for table `comentario`
+-- AUTO_INCREMENT de tabela `contato`
 --
-ALTER TABLE `comentario`
-  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
-  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_publ`) REFERENCES `publicacao` (`id_publ`);
+ALTER TABLE `contato`
+  MODIFY `id_contato` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Constraints for table `publicacao`
+-- AUTO_INCREMENT de tabela `posts`
 --
-ALTER TABLE `publicacao`
-  ADD CONSTRAINT `publicacao_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
+ALTER TABLE `posts`
+  MODIFY `id_post` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

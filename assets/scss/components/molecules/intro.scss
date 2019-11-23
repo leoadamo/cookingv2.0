@@ -1,0 +1,35 @@
+.intro {
+	padding: 30% 5%;
+	padding-top: 30%;
+	@include above(m) {
+		padding-top: 15%;
+	}
+	&__title {
+		text-align: center;
+	}
+
+	&__logout {
+		display: block;
+		margin-top: 10%;
+		text-decoration: none;
+		text-align: center;
+		cursor: pointer;
+
+		&:after {
+			content: "";
+			display: block;
+			margin: 2% auto 0;
+			width: 0;
+			height: 2px;
+			background-color: $quaternary-color;
+			transition: width 0.3s;
+		}
+
+		&:hover::after {
+			width: 50%;
+			@include above(m) {
+				width: 30%;
+			}
+		}
+	}
+}

@@ -105,6 +105,11 @@ section {
 
 body {
 	line-height: 1;
+	overflow: hidden;
+
+	&.has-overflow {
+		overflow: auto;
+	}
 }
 
 ol,
@@ -120,7 +125,7 @@ q {
 blockquote {
 	&:before,
 	&:after {
-		content: '';
+		content: "";
 		content: none;
 	}
 }
@@ -128,7 +133,7 @@ blockquote {
 q {
 	&:before,
 	&:after {
-		content: '';
+		content: "";
 		content: none;
 	}
 }
