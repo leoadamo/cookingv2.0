@@ -50,7 +50,7 @@ export default () => {
 					submitHandler: (form, e) => {
 						e.preventDefault();
 
-						Contact.functions.verifyContact(form);
+						Contact.functions.verifyContact(form, e);
 					}
 				});
 			},
@@ -64,18 +64,17 @@ export default () => {
 				});
 
 				data = JSON.stringify(formData);
-				console.log(data);
+
 				$.ajax({
 					type: "POST",
 					url: Contact.cache.server,
 					data: data,
 					contentType: "application/json; charset=utf-8;",
-					dataType: 'text',
+					dataType: "json",
 					success: response => {
 						if (response.success) {
 							window.location.replace("/feed.html");
 						} else console.log(response.msg);
-						console.log(response);
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);
