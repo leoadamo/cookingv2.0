@@ -1,14 +1,16 @@
 export default () => {
 	const Contact = {
 		init: () => {
-			Contact.bind.call();
+			Contact.bind.init.call();
 		},
 		cache: {
 			server: "http://localhost:8888/Projects/cookingv2.0/dist/php/contato/logica.php",
 			form: $(".js-contact-trigger")
 		},
-		bind: () => {
-			Contact.functions.validate();
+		bind: {
+			init: () => {
+				Contact.functions.validate();
+			}
 		},
 		functions: {
 			validate: () => {

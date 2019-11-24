@@ -1,14 +1,16 @@
 export default () => {
 	const Login = {
 		init: () => {
-			Login.bind.call();
+			Login.bind.init.call();
 		},
 		cache: {
 			server: "http://localhost:8888/Projects/cookingv2.0/dist/php/usuario/logica.php",
 			form: $(".js-login-trigger")
 		},
-		bind: () => {
-			Login.functions.validate();
+		bind: {
+			init: () => {
+				Login.functions.validate();
+			}
 		},
 		functions: {
 			validate: () => {

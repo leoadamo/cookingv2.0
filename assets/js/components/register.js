@@ -1,14 +1,16 @@
 export default () => {
 	const Register = {
 		init: () => {
-			Register.bind.call();
+			Register.bind.init.call();
 		},
 		cache: {
 			server: "http://localhost:8888/Projects/cookingv2.0/dist/php/usuario/logica.php",
 			form: $(".js-register-trigger")
 		},
-		bind: () => {
-			Register.functions.validate();
+		bind: {
+			init: () => {
+				Register.functions.validate();
+			}
 		},
 		functions: {
 			validate: () => {
@@ -20,8 +22,7 @@ export default () => {
 							lettersonly: true
 						},
 						bday: {
-							required: true,
-							date: true
+							required: true
 						},
 						phone: {
 							required: true,
