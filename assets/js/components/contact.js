@@ -5,7 +5,8 @@ export default () => {
 		},
 		cache: {
 			server: "http://localhost:8888/Projects/cookingv2.0/dist/php/contato/logica.php",
-			form: $(".js-contact-trigger")
+			form: $(".js-contact-trigger"),
+			spinner: $(".js-loader-trigger")
 		},
 		bind: {
 			init: () => {
@@ -52,6 +53,7 @@ export default () => {
 					submitHandler: (form, e) => {
 						e.preventDefault();
 
+						Contact.cache.spinner.toggleClass("hidden");
 						Contact.functions.verifyContact(form);
 					}
 				});
@@ -88,6 +90,10 @@ export default () => {
 				$(form)
 					.find("*")
 					.removeClass("success");
+			},
+			toggleSpinner: () => {
+				Auth.cache.spinner.toggleClass("hidden");
+				$("body").addClass("has-overflow");
 			}
 		}
 	};
