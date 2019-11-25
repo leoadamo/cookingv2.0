@@ -96,7 +96,6 @@ export default () => {
 						if (response.success) {
 							window.location.replace("/login.html");
 						} else console.log(response.message);
-						console.log(response);
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);

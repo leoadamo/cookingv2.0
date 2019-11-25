@@ -186,11 +186,7 @@
 																		width="600" align="center">
 																		<tbody>
 																			<tr>
-																				<td height="23" width="100"><!--  --></td>
-																				<td height="23" width="75"><!--  --></td>
-																				<td height="23" width="250"  style="font-family: Arial, Helvetica, sans-serif; font-size: 30px; letter-spacing: 0; line-height: 23px; ;text-align: center; color: #404040;">Olá, '.$nome.'!<br/><br/>Estamos quase lá!</td>
-																				<td height="23" width="75"><!--  --></td>
-																				<td height="23" width="100"><!--  --></td>
+																				<td height="23" style="font-family: Arial, Helvetica, sans-serif; font-size: 30px; letter-spacing: 0; line-height: 32px; ;text-align: center; color: #404040;">Olá, '.$nome.'!<br/><br/>Estamos quase lá!</td>
 																			</tr>
 																		</tbody>
 																	</table>
