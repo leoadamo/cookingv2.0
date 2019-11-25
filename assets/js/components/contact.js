@@ -55,6 +55,22 @@ export default () => {
 					submitHandler: (form, e) => {
 						e.preventDefault();
 
+						let timerInterval;
+						Swal.fire({
+							title: "Enviando sua mensagem!",
+							html: "Isso pode levar alguns <b></b> milisegundos.",
+							timer: 3000,
+							timerProgressBar: true,
+							onBeforeOpen: () => {
+								Swal.showLoading();
+								timerInterval = setInterval(() => {
+									Swal.getContent().querySelector("b").textContent = Swal.getTimerLeft();
+								}, 100);
+							},
+							onClose: () => {
+								clearInterval(timerInterval);
+							}
+						});
 						Contact.functions.verifyContact(form);
 					}
 				});
