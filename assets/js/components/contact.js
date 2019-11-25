@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 export default () => {
 	const Contact = {
 		init: () => {
@@ -53,7 +55,6 @@ export default () => {
 					submitHandler: (form, e) => {
 						e.preventDefault();
 
-						Contact.cache.spinner.toggleClass("hidden");
 						Contact.functions.verifyContact(form);
 					}
 				});
@@ -77,7 +78,15 @@ export default () => {
 					dataType: "json",
 					success: response => {
 						if (response.success) {
-							window.location.replace("/feed.html");
+							Swal.fire({
+								title: "Sucesso!",
+								text: "Obrigado por enviar sua mensagem! Em breve você receberá um e-mail de confirmação.",
+								icon: "success",
+								confirmButtonText: "Ir para o Feed"
+							});
+							$("button.swal2-confirm").on("click", () => {
+								window.location.replace("/feed.html");
+							});
 						} else console.log(response.message);
 					},
 					error: (xhr, thrownError) => {

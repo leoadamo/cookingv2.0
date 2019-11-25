@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 export default () => {
 	const Login = {
 		init: () => {
@@ -63,7 +65,14 @@ export default () => {
 						if (response.isLogged) {
 							Login.functions.setCookie("login", response.user.login, 1);
 							window.location.replace("/feed.html");
-						} else console.log(response.message);
+						} else {
+							Swal.fire({
+								title: "Erro!",
+								text: "Usuário não cadastrado em nossa base de dados, por favor, tente novamente.",
+								icon: "error",
+								confirmButtonText: "Ok"
+							});
+						}
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);

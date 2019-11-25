@@ -1,5 +1,5 @@
 .ttl-tp1 {
-	font-family: 'Raleway-Bold', sans-serif;
+	font-family: "Raleway-Bold", sans-serif;
 	font-size: 2rem;
 	@include above(m) {
 		font-size: 3.5rem;
@@ -15,7 +15,7 @@
 }
 
 .ttl-tp3 {
-	font-family: 'Raleway-Medium';
+	font-family: "Raleway-Medium";
 	font-size: 2rem;
 	color: $quinternary-color;
 	line-height: 1.5;
@@ -23,7 +23,7 @@
 }
 
 .ttl-tp4 {
-	font-family: 'Raleway-Bold';
+	font-family: "Raleway-Bold";
 	font-size: 0.9rem;
 	color: $quinternary-color;
 	line-height: 1.5;
@@ -34,7 +34,7 @@
 }
 
 .btn {
-	font-family: 'Raleway-Bold';
+	font-family: "Raleway-Bold";
 	font-size: 0.8rem;
 	letter-spacing: 1px;
 	color: $quaternary-color;
@@ -44,8 +44,24 @@
 	}
 }
 
+.swal2-title {
+	font-family: "Raleway-Bold";
+}
+
+.swal2-content {
+	font-family: "Raleway";
+}
+
+.swal2-actions {
+	font-family: "Raleway";
+}
+
+.swal2-footer {
+	font-family: "Raleway";
+}
+
 p {
-	font-family: 'Raleway-Medium';
+	font-family: "Raleway-Medium";
 	font-size: 0.9rem;
 	line-height: 1.2;
 	letter-spacing: 1px;
@@ -56,7 +72,7 @@ p {
 }
 
 a {
-	font-family: 'Raleway-Medium';
+	font-family: "Raleway-Medium";
 	font-size: 0.8rem;
 	@include above(m) {
 		font-size: 1rem;
@@ -67,7 +83,7 @@ a {
 }
 
 input {
-	font-family: 'Raleway';
+	font-family: "Raleway";
 	color: $quinternary-color;
 	font-size: 0.8rem;
 	@include above(m) {
