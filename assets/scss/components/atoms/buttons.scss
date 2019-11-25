@@ -5,6 +5,7 @@
 	padding: 3% 10%;
 	border-radius: 30px;
 	cursor: pointer;
+	outline: none;
 
 	&:hover {
 		background-color: $secondary-color;
@@ -41,7 +42,7 @@
 			@include align(vertical);
 			width: 24px;
 			height: 24px;
-			background-image: url('../images/icons/right-arrow.png');
+			background-image: url("../images/icons/right-arrow.png");
 		}
 	}
 }

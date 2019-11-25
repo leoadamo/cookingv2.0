@@ -1,15 +1,17 @@
 export default () => {
 	const ToggleMenu = {
 		init: () => {
-			ToggleMenu.bind.call();
+			ToggleMenu.bind.init.call();
 		},
 		cache: {
 			hamburger: $(".js-hamburger-trigger"),
 			menu: $(".js-menu-trigger"),
 			body: $("body")
 		},
-		bind: () => {
-			ToggleMenu.cache.hamburger.on("click", ToggleMenu.functions.openMenu);
+		bind: {
+			init: () => {
+				ToggleMenu.cache.hamburger.on("click", ToggleMenu.functions.openMenu);
+			}
 		},
 		functions: {
 			openMenu: e => {

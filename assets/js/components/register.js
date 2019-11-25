@@ -1,14 +1,18 @@
+import Swal from "sweetalert2";
+
 export default () => {
 	const Register = {
 		init: () => {
-			Register.bind.call();
+			Register.bind.init.call();
 		},
 		cache: {
 			server: "http://localhost:8888/Projects/cookingv2.0/dist/php/usuario/logica.php",
 			form: $(".js-register-trigger")
 		},
-		bind: () => {
-			Register.functions.validate();
+		bind: {
+			init: () => {
+				Register.functions.validate();
+			}
 		},
 		functions: {
 			validate: () => {
@@ -20,8 +24,7 @@ export default () => {
 							lettersonly: true
 						},
 						bday: {
-							required: true,
-							date: true
+							required: true
 						},
 						phone: {
 							required: true,
@@ -78,6 +81,11 @@ export default () => {
 
 				formData["method"] = "insert";
 
+				formData.bday = formData.bday
+					.split("/")
+					.reverse()
+					.join()
+					.replace(/,/g, "-");
 				data = JSON.stringify(formData);
 
 				$.ajax({
@@ -88,9 +96,23 @@ export default () => {
 					dataType: "json",
 					success: response => {
 						if (response.success) {
-							window.location.replace("/login.html");
-						} else console.log(response.message);
-						console.log(response);
+							Swal.fire({
+								title: "Sucesso!",
+								text: "Seu cadastro foi realizado com sucesso, por favor efetue seu login.",
+								icon: "success",
+								confirmButtonText: "Acessar a página de Login"
+							});
+							$("button.swal2-confirm").on("click", () => {
+								window.location.replace("/login.html");
+							});
+						} else {
+							Swal.fire({
+								title: "Erro!",
+								text: "Não foi possível realizar seu cadastro, por favor, tente novamente mais tarde.",
+								icon: "error",
+								confirmButtonText: "Ok"
+							});
+						}
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);

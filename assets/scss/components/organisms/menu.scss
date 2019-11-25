@@ -41,15 +41,15 @@
 	&__item {
 		display: block;
 		margin-bottom: 2%;
-		@include above(l) {
-			margin-bottom: 4%;
+		@include above(xl) {
+			margin-bottom: 3%;
 		}
 	}
 
 	&__link {
 		position: relative;
 		display: block;
-		padding: 3%;
+		padding: 2%;
 		text-decoration: none;
 		text-transform: lowercase;
 
@@ -86,12 +86,12 @@
 		padding: 3%;
 		text-decoration: none;
 		text-transform: lowercase;
-		bottom: 12%;
+		bottom: 6%;
 		cursor: pointer;
 		right: calc(16px + 8%);
 
 		@include above(m) {
-			bottom: 5%;
+			bottom: 3%;
 			right: calc(16px + 10%);
 		}
 

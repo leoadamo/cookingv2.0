@@ -1,15 +1,17 @@
 export default () => {
 	const Auth = {
 		init: () => {
-			Auth.bind.call();
+			Auth.bind.init.call();
 		},
 		cache: {
 			spinner: $(".js-loader-trigger"),
 			logout: $(".js-logout-trigger")
 		},
-		bind: () => {
-			Auth.functions.authenticate();
-			Auth.cache.logout.on("click", Auth.functions.deleteCookie);
+		bind: {
+			init: () => {
+				Auth.functions.authenticate();
+				Auth.cache.logout.on("click", Auth.functions.deleteCookie);
+			}
 		},
 		functions: {
 			authenticate: () => {

@@ -1,14 +1,18 @@
+import Swal from "sweetalert2";
+
 export default () => {
 	const Login = {
 		init: () => {
-			Login.bind.call();
+			Login.bind.init.call();
 		},
 		cache: {
 			server: "http://localhost:8888/Projects/cookingv2.0/dist/php/usuario/logica.php",
 			form: $(".js-login-trigger")
 		},
-		bind: () => {
-			Login.functions.validate();
+		bind: {
+			init: () => {
+				Login.functions.validate();
+			}
 		},
 		functions: {
 			validate: () => {
@@ -61,7 +65,14 @@ export default () => {
 						if (response.isLogged) {
 							Login.functions.setCookie("login", response.user.login, 1);
 							window.location.replace("/feed.html");
-						} else console.log(response.message);
+						} else {
+							Swal.fire({
+								title: "Erro!",
+								text: "Usuário não cadastrado em nossa base de dados, por favor, tente novamente.",
+								icon: "error",
+								confirmButtonText: "Ok"
+							});
+						}
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);

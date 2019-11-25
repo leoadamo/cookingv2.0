@@ -1,14 +1,19 @@
+import Swal from "sweetalert2";
+
 export default () => {
 	const Contact = {
 		init: () => {
-			Contact.bind.call();
+			Contact.bind.init.call();
 		},
 		cache: {
 			server: "http://localhost:8888/Projects/cookingv2.0/dist/php/contato/logica.php",
-			form: $(".js-contact-trigger")
+			form: $(".js-contact-trigger"),
+			spinner: $(".js-loader-trigger")
 		},
-		bind: () => {
-			Contact.functions.validate();
+		bind: {
+			init: () => {
+				Contact.functions.validate();
+			}
 		},
 		functions: {
 			validate: () => {
@@ -50,6 +55,22 @@ export default () => {
 					submitHandler: (form, e) => {
 						e.preventDefault();
 
+						let timerInterval;
+						Swal.fire({
+							title: "Enviando sua mensagem!",
+							html: "Isso pode levar alguns <b></b> milisegundos.",
+							timer: 3000,
+							timerProgressBar: true,
+							onBeforeOpen: () => {
+								Swal.showLoading();
+								timerInterval = setInterval(() => {
+									Swal.getContent().querySelector("b").textContent = Swal.getTimerLeft();
+								}, 100);
+							},
+							onClose: () => {
+								clearInterval(timerInterval);
+							}
+						});
 						Contact.functions.verifyContact(form);
 					}
 				});
@@ -73,8 +94,23 @@ export default () => {
 					dataType: "json",
 					success: response => {
 						if (response.success) {
-							window.location.replace("/feed.html");
-						} else console.log(response.message);
+							Swal.fire({
+								title: "Sucesso!",
+								text: "Obrigado por enviar sua mensagem! Em breve você receberá um e-mail de confirmação.",
+								icon: "success",
+								confirmButtonText: "Ir para o Feed"
+							});
+							$("button.swal2-confirm").on("click", () => {
+								window.location.replace("/feed.html");
+							});
+						} else {
+							Swal.fire({
+								title: "Erro!",
+								text: "Ocorreu algum erro inesperado, por favor, tente novamente mais tarde.",
+								icon: "error",
+								confirmButtonText: "Ok"
+							});
+						}
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);
@@ -86,6 +122,10 @@ export default () => {
 				$(form)
 					.find("*")
 					.removeClass("success");
+			},
+			toggleSpinner: () => {
+				Auth.cache.spinner.toggleClass("hidden");
+				$("body").addClass("has-overflow");
 			}
 		}
 	};

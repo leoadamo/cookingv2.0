@@ -8,6 +8,7 @@ import Login from "./components/login";
 import Register from "./components/register";
 import ToggleMenu from "./components/toggle-menu";
 import Contact from "./components/contact";
+import DatePicker from "./components/datepicker";
 
 window.$ = jquery;
 
@@ -18,4 +19,5 @@ $(() => {
 	Register();
 	ToggleMenu();
 	Contact();
+	DatePicker();
 });
