@@ -103,7 +103,14 @@ export default () => {
 							$("button.swal2-confirm").on("click", () => {
 								window.location.replace("/feed.html");
 							});
-						} else console.log(response.message);
+						} else {
+							Swal.fire({
+								title: "Erro!",
+								text: "Ocorreu algum erro inesperado, por favor, tente novamente mais tarde.",
+								icon: "error",
+								confirmButtonText: "Ok"
+							});
+						}
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);

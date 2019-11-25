@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 export default () => {
 	const Register = {
 		init: () => {
@@ -94,8 +96,23 @@ export default () => {
 					dataType: "json",
 					success: response => {
 						if (response.success) {
-							window.location.replace("/login.html");
-						} else console.log(response.message);
+							Swal.fire({
+								title: "Sucesso!",
+								text: "Seu cadastro foi realizado com sucesso, por favor efetue seu login.",
+								icon: "success",
+								confirmButtonText: "Acessar a página de Login"
+							});
+							$("button.swal2-confirm").on("click", () => {
+								window.location.replace("/login.html");
+							});
+						} else {
+							Swal.fire({
+								title: "Erro!",
+								text: "Não foi possível realizar seu cadastro, por favor, tente novamente mais tarde.",
+								icon: "error",
+								confirmButtonText: "Ok"
+							});
+						}
 					},
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);
