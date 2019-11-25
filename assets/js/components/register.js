@@ -79,6 +79,11 @@ export default () => {
 
 				formData["method"] = "insert";
 
+				formData.bday = formData.bday
+					.split("/")
+					.reverse()
+					.join()
+					.replace(/,/g, "-");
 				data = JSON.stringify(formData);
 
 				$.ajax({
