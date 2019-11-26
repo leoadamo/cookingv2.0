@@ -72,46 +72,35 @@ export default () => {
 				});
 			},
 			verifyUser: form => {
-				const values = $(form).serializeArray();
-				const formData = {};
-				let data;
-
-				$.each(values, (i, obj) => {
-					formData[obj.name] = obj.value;
-				});
-
-				formData["method"] = "insert";
-
-				formData.bday = formData.bday
-					.split("/")
-					.reverse()
-					.join()
-					.replace(/,/g, "-");
-				data = JSON.stringify(formData);
+				let data = new FormData(form);
+				data.append("method", "insert");
 
 				$.ajax({
 					type: "POST",
 					url: Register.cache.server,
 					data: data,
 					contentType: false,
+					processData: false,
+					cache: false,
 					dataType: "json",
+					enctype: "multipart/form-data",
 					success: response => {
 						if (response.success) {
 							Swal.fire({
-								title: "Sucesso!",
-								text: "Seu cadastro foi realizado com sucesso, por favor efetue seu login.",
+								title: response.title,
+								text: response.message,
 								icon: "success",
-								confirmButtonText: "Acessar a página de Login"
+								confirmButtonText: response.btnText
 							});
 							$("button.swal2-confirm").on("click", () => {
 								window.location.replace("/login.html");
 							});
 						} else {
 							Swal.fire({
-								title: "Erro!",
-								text: "Não foi possível realizar seu cadastro, por favor, tente novamente mais tarde.",
+								title: response.title,
+								text: response.message,
 								icon: "error",
-								confirmButtonText: "Ok"
+								confirmButtonText: response.btnText
 							});
 						}
 					},

@@ -44,34 +44,28 @@ export default () => {
 				});
 			},
 			verifyUser: form => {
-				const values = $(form).serializeArray();
-				const formData = {};
-				let data;
-
-				$.each(values, (i, obj) => {
-					formData[obj.name] = obj.value;
-				});
-
-				formData["method"] = "verify";
-
-				data = JSON.stringify(formData);
+				let data = new FormData(form);
+				data.append("method", "verify");
 
 				$.ajax({
 					type: "POST",
 					url: Login.cache.server,
 					data: data,
 					contentType: false,
+					processData: false,
+					cache: false,
 					dataType: "json",
+					enctype: "multipart/form-data",
 					success: response => {
 						if (response.isLogged) {
 							Login.functions.setCookie("login", response.user.login, 1);
 							window.location.replace("/feed.html");
 						} else {
 							Swal.fire({
-								title: "Erro!",
-								text: "Usuário não cadastrado em nossa base de dados, por favor, tente novamente.",
+								title: response.title,
+								text: response.message,
 								icon: "error",
-								confirmButtonText: "Ok"
+								confirmButtonText: response.btnText
 							});
 						}
 					},
