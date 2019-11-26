@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import Api from "../settings/api";
 
 export default () => {
 	const Register = {
@@ -6,7 +7,7 @@ export default () => {
 			Register.bind.init.call();
 		},
 		cache: {
-			server: "http://localhost:8888/Projects/cookingv2.0/dist/php/usuario/logica.php",
+			server: Api.getUrlApi("usuario/logica.php"),
 			form: $(".js-register-trigger")
 		},
 		bind: {

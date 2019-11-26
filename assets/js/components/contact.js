@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import Api from "../settings/api";
 
 export default () => {
 	const Contact = {
@@ -6,7 +7,7 @@ export default () => {
 			Contact.bind.init.call();
 		},
 		cache: {
-			server: "http://localhost:8888/Projects/cookingv2.0/dist/php/contato/logica.php",
+			server: Api.getUrlApi("contato/logica.php"),
 			form: $(".js-contact-trigger"),
 			spinner: $(".js-loader-trigger")
 		},

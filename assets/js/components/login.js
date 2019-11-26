@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import Api from "./api";
+import Api from "../settings/api";
 
 export default () => {
 	const Login = {
