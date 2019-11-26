@@ -60,7 +60,7 @@ export default () => {
 						Swal.fire({
 							title: "Enviando sua mensagem!",
 							html: "Isso pode levar alguns <b></b> milisegundos.",
-							timer: 3000,
+							timer: 2500,
 							timerProgressBar: true,
 							onBeforeOpen: () => {
 								Swal.showLoading();

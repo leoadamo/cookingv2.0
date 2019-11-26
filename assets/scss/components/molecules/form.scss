@@ -3,7 +3,7 @@
 
 	&__control {
 		background-color: $quaternary-color;
-		padding: 13% 10%;
+		padding: 10%;
 		border-radius: 30px;
 		text-align: center;
 
@@ -12,7 +12,7 @@
 			border: none;
 			border-bottom: 1px solid $sexagenary-color;
 			padding: 5% 0;
-			margin-bottom: 3%;
+			margin-bottom: 2%;
 			transition: 0.1s border-color ease-out;
 
 			&:focus {
@@ -31,8 +31,7 @@
 
 		label.error {
 			display: block;
-			margin-bottom: 5%;
-			font-family: 'Raleway-Medium';
+			font-family: "Raleway-Medium";
 			font-size: 0.8rem;
 			text-align: left;
 			color: $eightieth-color;

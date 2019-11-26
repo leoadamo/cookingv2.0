@@ -15,6 +15,9 @@ export default () => {
 			setDatePicker: () => {
 				if ($(".js-datepicker").length) {
 					datepicker(".js-datepicker", {
+						onHide: instance => {
+							$(instance.el).valid();
+						},
 						formatter: (input, date, instance) => {
 							const value = date.toLocaleDateString("pt-br");
 							input.value = value;
