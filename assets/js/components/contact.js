@@ -77,39 +77,34 @@ export default () => {
 				});
 			},
 			verifyContact: form => {
-				const values = $(form).serializeArray();
-				const formData = {};
-				let data;
-
-				$.each(values, (i, obj) => {
-					formData[obj.name] = obj.value;
-				});
-
-				data = JSON.stringify(formData);
+				let data = new FormData(form);
 
 				$.ajax({
 					type: "POST",
 					url: Contact.cache.server,
 					data: data,
 					contentType: false,
+					processData: false,
+					cache: false,
 					dataType: "json",
+					enctype: "multipart/form-data",
 					success: response => {
 						if (response.success) {
 							Swal.fire({
-								title: "Sucesso!",
-								text: "Obrigado por enviar sua mensagem! Em breve você receberá um e-mail de confirmação.",
+								title: response.title,
+								text: response.message,
 								icon: "success",
-								confirmButtonText: "Ir para o Feed"
+								confirmButtonText: response.btnText
 							});
 							$("button.swal2-confirm").on("click", () => {
 								window.location.replace("/feed.html");
 							});
 						} else {
 							Swal.fire({
-								title: "Erro!",
-								text: "Ocorreu algum erro inesperado, por favor, tente novamente mais tarde.",
+								title: response.title,
+								text: response.messages,
 								icon: "error",
-								confirmButtonText: "Ok"
+								confirmButtonText: response.btnText
 							});
 						}
 					},
