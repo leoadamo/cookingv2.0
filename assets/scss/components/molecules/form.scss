@@ -27,6 +27,47 @@
 			&.success {
 				border-color: $primary-color;
 			}
+
+			&.inputfile {
+				width: 0.1px;
+				height: 0.1px;
+				opacity: 0;
+				overflow: hidden;
+				position: absolute;
+				z-index: -1;
+			}
+
+			&.inputfile + label {
+				position: relative;
+				padding: 10px 15px;
+				margin-top: 8%;
+				font-size: 0.9rem;
+				font-family: "Raleway-Medium";
+				color: $quaternary-color;
+				background-color: $tertiary-color;
+				display: inline-block;
+				cursor: pointer;
+			}
+
+			&.inputfile + label:hover {
+				background-color: darken($tertiary-color, 7%);
+				transition: all 0.4s ease-out;
+			}
+
+			&.inputfile + label * {
+				pointer-events: none;
+			}
+
+			&.inputfile + label > strong::before {
+				content: "";
+				display: inline-block;
+				width: 24px;
+				height: 24px;
+				margin-right: 10px;
+				background: url("../images/icons/upload.png") no-repeat center;
+				background-size: 24px 24px;
+				vertical-align: middle;
+			}
 		}
 
 		label.error {
