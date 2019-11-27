@@ -8,11 +8,13 @@ export default () => {
 		},
 		cache: {
 			server: Api.getUrlApi("usuario/logica.php"),
-			form: $(".js-register-trigger")
+			form: $(".js-register-trigger"),
+			input: $(".js-inputfile-trigger")
 		},
 		bind: {
 			init: () => {
 				Register.functions.validate();
+				Register.functions.inputFileHandler(Register.cache.input);
 			}
 		},
 		functions: {
@@ -114,6 +116,21 @@ export default () => {
 				$(form)
 					.find("*")
 					.removeClass("success");
+			},
+			inputFileHandler: input => {
+				const $element = input,
+					$label = $element.next("label"),
+					labelVal = $label.html();
+
+				$element.on("change", function(e) {
+					let fileName;
+
+					if (e.target.value) {
+						fileName = e.target.value.split("\\").pop();
+					}
+
+					fileName ? $label.find("strong").html(fileName) : $label.html(labelVal);
+				});
 			}
 		}
 	};

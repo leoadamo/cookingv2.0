@@ -7,13 +7,12 @@
 
 		&__link {
 			display: block;
-			text-decoration: none;
 			padding: 4%;
 
 			&:after {
-				content: '';
+				content: "";
 				display: block;
-				margin: 5% auto 0;
+				margin: 4% auto 0;
 				width: 0;
 				height: 2px;
 				background-color: $quaternary-color;

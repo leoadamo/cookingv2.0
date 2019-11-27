@@ -21,7 +21,7 @@ export default () => {
 						return;
 					}
 				} else {
-					if (window.location.pathname === "/login.html") {
+					if (window.location.pathname === "/login.html" || window.location.pathname === "/cadastro.html") {
 						window.location.replace("/intro.html");
 						return;
 					}

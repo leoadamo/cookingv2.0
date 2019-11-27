@@ -14,8 +14,7 @@
 
 	&--login {
 		width: 80%;
-		margin-top: 5%;
-		@include align(horizontal);
+		margin: 5% auto 0;
 		@include above(l) {
 			width: 60%;
 		}
