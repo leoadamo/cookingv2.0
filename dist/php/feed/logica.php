@@ -12,7 +12,7 @@
 			case 'list':
 				$posts = listPosts ($pdo);
 				if ($posts) {
-					echo(json_encode([$posts, 'success' => true]));
+					echo(json_encode(['data' => $posts, 'success' => true]));
 				} else {
 					$message = 'Não há posts disponíveis em nossa base de dados';
 					echo(json_encode(['successs' => 'false', 'title' => 'Erro!', 'message' => $message]));
