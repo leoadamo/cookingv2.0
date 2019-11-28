@@ -10,7 +10,7 @@
 
 		switch($_POST['method']) {
 			case 'list':
-				$posts = listPosts ($pdo);
+				$posts = listPosts($pdo);
 				if ($posts) {
 					echo(json_encode(['data' => $posts, 'success' => true]));
 				} else {

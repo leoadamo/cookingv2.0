@@ -88,3 +88,11 @@ input {
 	font-size: 0.9rem;
 	letter-spacing: 1px;
 }
+
+b {
+	font-family: "Raleway-bold";
+	color: $quinternary-color;
+	@include above(m) {
+		font-size: 1.2rem;
+	}
+}

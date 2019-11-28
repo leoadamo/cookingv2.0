@@ -9,6 +9,12 @@
 		padding-right: 0;
 	}
 
+	&__title {
+		margin-top: 5%;
+		padding-left: 2%;
+		border-left: 4px solid $tertiary-color;
+	}
+
 	&__item {
 		margin-bottom: 20%;
 
@@ -22,28 +28,22 @@
 			width: 40px;
 			height: 40px;
 			border-radius: 50%;
-			background: url('../images/leo-spencer.jpg');
-			background-size: cover;
 			box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.3);
 		}
 
 		&__description {
 			margin-top: 5%;
-
-			@include above(m) {
-				margin-top: 2%;
-			}
 		}
 
 		.info {
 			display: inline-block;
-			margin-bottom: 2%;
+			margin-bottom: 5%;
 
 			&__date {
 				display: block;
 				margin-bottom: 10%;
 				color: $seventieth-color;
-				font-family: 'Raleway';
+				font-family: "Raleway";
 				font-size: 0.9rem;
 
 				@include above(m) {

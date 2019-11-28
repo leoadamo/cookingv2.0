@@ -32,7 +32,7 @@ const jsWATCH = "assets/js/**/*.js";
 
 // HTML AND ASSETS
 const htmlSRC = "dist/*.html";
-const imagesSRC = "assets/images/**/*.+(png|jpg|gif|svg)";
+const imagesSRC = "assets/images/**/*.+(png|jpg|jpeg|gif|svg)";
 const fontsSRC = "assets/fonts/**/*";
 
 function browserSync(done) {
