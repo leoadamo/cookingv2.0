@@ -32,19 +32,39 @@
 			break;
 
 			case 'insert':
-				if(isset($_POST['name']) && isset($_POST['bday']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password'])) {
-					$name = $_POST['name'];
-					$email = $_POST['email'];
-					$password = $_POST['password'];
-					$encPassword = base64_encode($password);
-					$birthday = $_POST['bday'];
-					$birthdayConverted = date('Y-m-d', strtotime(str_replace('/', '-', $birthday)));
-					$phone = $_POST['phone'];
-					$array = array($name, $email, $encPassword, $birthdayConverted, $phone);
-					$user = insertUser($pdo, $array);
+				if(isset($_POST['name']) && isset($_POST['bday']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_FILES['file'])) {
 
-					if($user) echo(json_encode(['success' => true, 'title' => 'Sucesso!', 'message' => 'Seu cadastro foi realizado com sucesso, por favor efetue seu login.', 'btnText' => 'Acessar a página de Login']));
-					else echo(json_encode(['success' => false, 'title' => 'Erro!', 'message' => 'Não foi possível realizar seu cadastro, por favor, tente novamente mais tarde.', 'btnText' => 'Ok']));
+					$size = $_FILES['file']['size'];
+					$ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+					$maxsize = 2 * 1024 * 1024;
+
+					if($size <= $maxsize) {
+						$filename = md5(date('Y-m-d H:i:s'));
+						$file['photo'] = false;
+
+						if(!empty($_FILES['file']['name'])) {
+							if(!move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/images/' . $filename . '.' . $ext)) {
+								$response = ['success' => false, 'message' => 'Erro ao fazer o upload de sua imagem, verfique as permissões do repositório de destino'];
+							} else {
+								$file['photo'] = true;
+							}
+						}
+
+						if(!isset($response)) {
+							$name = $_POST['name'];
+							$email = $_POST['email'];
+							$password = $_POST['password'];
+							$encPassword = base64_encode($password);
+							$birthday = $_POST['bday'];
+							$birthdayConverted = date('Y-m-d', strtotime(str_replace('/', '-', $birthday)));
+							$phone = $_POST['phone'];
+							$photo = $file['photo'] ? $filename . '.' . $ext : null;
+							$array = array($name, $email, $encPassword, $birthdayConverted, $phone, $photo);
+							$user = insertUser($pdo, $array);
+							if($user) echo(json_encode(['success' => true, 'title' => 'Sucesso!', 'message' => 'Seu cadastro foi realizado com sucesso, por favor efetue seu login.', 'btnText' => 'Acessar a página de Login']));
+							else echo(json_encode(['success' => false, 'title' => 'Erro!', 'message' => 'Não foi possível realizar seu cadastro, por favor, tente novamente mais tarde.', 'btnText' => 'Ok']));
+						}
+					}
 				}
 			break;
 
