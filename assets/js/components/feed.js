@@ -7,11 +7,14 @@ export default () => {
 		},
 		cache: {
 			server: Api.getUrlApi("feed/logica.php"),
-			ul: $(".js-posts-tracker")
+			ul: $(".js-posts-tracker"),
+			menuList: $(".js-list-trigger")
 		},
 		bind: {
 			init: () => {
 				Posts.functions.listPosts();
+				const userLogged = Posts.functions.getCookie();
+				Posts.functions.userMenu(userLogged);
 			}
 		},
 		functions: {
@@ -27,11 +30,10 @@ export default () => {
 					processData: false,
 					cache: false,
 					dataType: "json",
-					enctype: "multpart/form-data",
+					enctype: "multipart/form-data",
 					success: response => {
 						if (response.success) {
 							const data = response.data;
-
 							$.each(data, (index, value) => {
 								let localDate = new Date(value.data_post).toLocaleDateString("pt-br");
 
@@ -60,6 +62,38 @@ export default () => {
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);
 						console.log(`Erro: ${thrownError}`);
+					}
+				});
+			},
+
+			getCookie: () => {
+				const name = "login";
+				const v = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+				return v ? v[2] : null;
+			},
+
+			userMenu: userLogged => {
+				let data = new FormData();
+				data.append("email", userLogged);
+				data.append("method", "verify");
+
+				$.ajax({
+					type: "POST",
+					url: Posts.cache.server,
+					data: data,
+					contentType: false,
+					processData: false,
+					cache: false,
+					dataType: "json",
+					enctype: "multipart/form-data",
+					success: response => {
+						const data = response.data;
+						Posts.cache.menuList.before(
+							`<figure class="photo">
+								<img class="photo__rounded" src="http://localhost/projects/cookingv2.0/dist/php/usuario/uploads/images/${data.foto}" alt="Foto de perfil do Usuário que está logado no sistema." />
+								<figcaption class="photo__authorName ttl-tp4">${data.nome}</figcaption>
+							</figure>`
+						);
 					}
 				});
 			}

@@ -19,6 +19,15 @@
 				}
 			break;
 
+			case 'verify':
+				$email = $_POST['email'];
+				$array = array($email);
+				$user = userLogged ($pdo, $array);
+				if ($user) {
+					echo(json_encode(['data' => $user, 'success' => true]));
+				}
+			break;
+
 			default:
 				echo(json_encode(['success' => false, 'message' => 'Erro na requisição']));
 			break;
