@@ -93,6 +93,10 @@ export default () => {
 								<figcaption class="photo__authorName ttl-tp4">${data.nome}</figcaption>
 							</figure>`
 						);
+					},
+					error: (xhr, thrownError) => {
+						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);
+						console.log(`Erro: ${thrownError}`);
 					}
 				});
 			}
