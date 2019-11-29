@@ -1,7 +1,7 @@
 <?php
   $dsn = 'mysql:dbname=cookingv2.0;host=localhost;charset=utf8';
-  $dbuser = 'root';
-  $dbpass = '';
+  $dbuser = 'mamp';
+  $dbpass = 'root';
 
   try {
     $pdo = new PDO(

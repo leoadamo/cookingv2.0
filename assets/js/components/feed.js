@@ -13,7 +13,7 @@ export default () => {
 		bind: {
 			init: () => {
 				Posts.functions.listPosts();
-				const userLogged = Posts.functions.getCookie();
+				const userLogged = Posts.functions.getCookie("login");
 				Posts.functions.userMenu(userLogged);
 			}
 		},
@@ -66,8 +66,7 @@ export default () => {
 				});
 			},
 
-			getCookie: () => {
-				const name = "login";
+			getCookie: name => {
 				const v = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
 				return v ? v[2] : null;
 			},
@@ -90,7 +89,7 @@ export default () => {
 						const data = response.data;
 						Posts.cache.menuList.before(
 							`<figure class="photo">
-								<img class="photo__rounded" src="http://localhost/projects/cookingv2.0/dist/php/usuario/uploads/images/${data.foto}" alt="Foto de perfil do Usuário que está logado no sistema." />
+								<img class="photo__rounded" src="${Api.getUrlApi("usuario/uploads/images/")}${data.foto}" alt="Foto de perfil do Usuário que está logado no sistema." />
 								<figcaption class="photo__authorName ttl-tp4">${data.nome}</figcaption>
 							</figure>`
 						);
