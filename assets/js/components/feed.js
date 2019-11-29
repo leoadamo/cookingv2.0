@@ -7,12 +7,14 @@ export default () => {
 		},
 		cache: {
 			server: Api.getUrlApi("feed/logica.php"),
-			ul: $(".js-posts-tracker"),
-			menuList: $(".js-list-trigger")
+			ulPosts: $(".js-posts-tracker"),
+			menuList: $(".js-list-trigger"),
+			ulCategories: $(".js-categories-trigger")
 		},
 		bind: {
 			init: () => {
 				Posts.functions.listPosts();
+				Posts.functions.listCategories();
 				const userLogged = Posts.functions.getCookie("login");
 				Posts.functions.userMenu(userLogged);
 			}
@@ -20,7 +22,7 @@ export default () => {
 		functions: {
 			listPosts: () => {
 				let data = new FormData();
-				data.append("method", "list");
+				data.append("method", "listPosts");
 
 				$.ajax({
 					type: "POST",
@@ -37,7 +39,7 @@ export default () => {
 							$.each(data, (index, value) => {
 								let localDate = new Date(value.data_post).toLocaleDateString("pt-br");
 
-								Posts.cache.ul.append(
+								Posts.cache.ulPosts.append(
 									`<li class="posts__item">
 											<picture>
 												<source srcset="${value.foto_perfil}"/>
@@ -55,6 +57,42 @@ export default () => {
 											<h2 class="posts__title ttl-tp4">${value.titulo}</h2>
 											<p class="posts__item__description">${value.texto}</p>
 										</li>`
+								);
+							});
+						}
+					},
+					error: (xhr, thrownError) => {
+						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);
+						console.log(`Erro: ${thrownError}`);
+					}
+				});
+			},
+
+			listCategories: () => {
+				let data = new FormData();
+				data.append("method", "listCategories");
+
+				$.ajax({
+					type: "POST",
+					url: Posts.cache.server,
+					data: data,
+					contentType: false,
+					processData: false,
+					cache: false,
+					dataType: "json",
+					enctype: "multipart/form-data",
+					success: response => {
+						if (response.success) {
+							const data = response.data;
+							$.each(data, (index, value) => {
+								Posts.cache.ulCategories.append(
+									`<li class="categories__type">
+										<picture>
+											<source srcset="${value.imagem}" />
+											<img class="categories__type__img" src="${value.imagem}" alt="" />
+										</picture>
+										<h3 class="categories__type__name ttl-tp4">${value.nome}</h3>
+									</li>`
 								);
 							});
 						}
