@@ -89,7 +89,7 @@ export default () => {
 									`<li class="categories__type">
 										<picture>
 											<source srcset="${value.imagem}" />
-											<img class="categories__type__img" src="${value.imagem}" alt="" />
+											<img class="categories__type__img" src="${value.imagem}" alt="Ícone da categoria que representa o tipo de receitas" />
 										</picture>
 										<h3 class="categories__type__name ttl-tp4">${value.nome}</h3>
 									</li>`
