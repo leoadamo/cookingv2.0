@@ -14,6 +14,20 @@
 		}
 	}
 
+	function listCategories($pdo) {
+		$sql = 'SELECT * FROM categorias';
+		$query = $pdo->prepare($sql);
+
+		try {
+			if($query->execute()) {
+				$categories = $query->fetchAll(PDO::FETCH_ASSOC);
+				return $categories ? $categories : false;
+			}
+		} catch (PDOException $e) {
+			echo('Erro na consulta:'.$e->getMessage());
+		}
+	}
+
 	function userLogged ($pdo, $array) {
 		$sql = 'SELECT nome, foto FROM usuarios WHERE e_mail = ?';
 		try {

@@ -9,10 +9,20 @@
 		require_once('../feed/funcoes.php');
 
 		switch($_POST['method']) {
-			case 'list':
+			case 'listPosts':
 				$posts = listPosts($pdo);
 				if ($posts) {
 					echo(json_encode(['data' => $posts, 'success' => true]));
+				} else {
+					$message = 'Não há posts disponíveis em nossa base de dados';
+					echo(json_encode(['successs' => 'false', 'title' => 'Erro!', 'message' => $message]));
+				}
+			break;
+
+			case 'listCategories':
+				$categories = listCategories($pdo);
+				if ($categories) {
+					echo(json_encode(['data' => $categories, 'success' => true]));
 				} else {
 					$message = 'Não há posts disponíveis em nossa base de dados';
 					echo(json_encode(['successs' => 'false', 'title' => 'Erro!', 'message' => $message]));
