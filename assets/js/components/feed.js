@@ -56,6 +56,8 @@ export default () => {
 											</picture>
 											<h2 class="posts__title ttl-tp4">${value.titulo}</h2>
 											<p class="posts__item__description">${value.texto}</p>
+											<button class="btn btn--new">Editar Post</button>
+											<button class="btn btn--del">Deletar Post</button>
 										</li>`
 								);
 							});

@@ -44,4 +44,30 @@
 			background-image: url("../images/icons/right-arrow.png");
 		}
 	}
+
+	&--del,
+	&--new {
+		@include column(1/2);
+		text-align: center;
+		margin-top: 5%;
+		margin-bottom: 10%;
+		padding: 2% 0%;
+		box-shadow: 2px 3px 4px 1px rgba(0, 0, 0, 0.3);
+	}
+
+	&--del {
+		background: $eightieth-color;
+
+		&:hover {
+			background-color: darken($eightieth-color, 10%);
+		}
+	}
+
+	&--new {
+		background-color: $primary-color;
+
+		&:hover {
+			background-color: darken($primary-color, 20%);
+		}
+	}
 }

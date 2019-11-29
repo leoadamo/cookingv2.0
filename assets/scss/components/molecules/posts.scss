@@ -16,6 +16,7 @@
 	}
 
 	&__item {
+		position: relative;
 		margin-bottom: 20%;
 
 		@include above(m) {
