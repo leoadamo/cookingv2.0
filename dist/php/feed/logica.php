@@ -38,6 +38,17 @@
 				}
 			break;
 
+			case 'delete':
+				$id = $_POST['post-id'];
+				$array = array($id);
+				$status = deletePost ($pdo, $array);
+				if ($status) {
+					echo(json_encode(['success' => true, 'message' => 'Feito! Post excluído com sucesso.']));
+				} else {
+					echo(json_encode(['success' => false, 'message' => 'Erro ao excluir a postagem!']));
+				}
+			break;
+
 			default:
 				echo(json_encode(['success' => false, 'message' => 'Erro na requisição']));
 			break;

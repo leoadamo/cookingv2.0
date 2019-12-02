@@ -9,16 +9,14 @@ export default () => {
 		cache: {
 			server: Api.getUrlApi("feed/logica.php"),
 			ulPosts: $(".js-posts-tracker"),
-			menuList: $(".js-list-trigger"),
-			ulCategories: $(".js-categories-trigger")
+			ulCategories: $(".js-categories-trigger"),
+			menuList: $(".js-list-trigger")
 		},
 		bind: {
 			init: () => {
 				Posts.functions.listPosts();
 				Posts.functions.listCategories();
-
-				const userLogged = Posts.functions.getCookie("login");
-				Posts.functions.userMenu(userLogged);
+				Posts.functions.userMenu(Posts.functions.getCookie("login"));
 
 				$("body").on("click", ".js-delete-trigger", e => {
 					Posts.functions.deletePost(e);
@@ -42,31 +40,9 @@ export default () => {
 					success: response => {
 						if (response.success) {
 							const data = response.data;
-							$.each(data, (index, value) => {
-								let localDate = new Date(value.data_post).toLocaleDateString("pt-br");
+							const $target = Posts.cache.ulPosts;
 
-								Posts.cache.ulPosts.append(
-									`<li class="posts__item">
-											<picture>
-												<source srcset="${value.foto_perfil}"/>
-												<img class="posts__item__avatar src="${value.foto_perfil}" alt="Foto de perfil do autor da postagem" />
-											</picture>
-											<div class="info">
-												<h3 class="ttl-tp4">${value.autor}</h3>
-												<time class="info__date" datetime="${value.data_post}">${localDate}</time>
-											</div>
-
-											<picture>
-												<source srcset="${value.imagem}" />
-												<img class="posts__image" src="${value.imagem}" alt="Imagem de um post da receita descrita no site" />
-											</picture>
-											<h2 class="posts__title ttl-tp4">${value.titulo}</h2>
-											<p class="posts__item__description">${value.texto}</p>
-											<button class="btn btn--new js-edit-trigger" data-id="${value.id_post}">Editar Post</button>
-											<button class="btn btn--del js-delete-trigger" data-id="${value.id_post}">Deletar Post</button>
-										</li>`
-								);
-							});
+							$target.html(Posts.functions.buildPosts(data));
 						}
 					},
 					error: (xhr, thrownError) => {
@@ -76,6 +52,38 @@ export default () => {
 				});
 			},
 
+			buildPosts: data => {
+				let elements = [];
+
+				$.each(data, (index, value) => {
+					let localDate = new Date(value.data_post).toLocaleDateString("pt-br");
+
+					elements.push(
+						`<li class="posts__item">
+							 <picture>
+								 <source srcset="${value.foto_perfil}"/>
+								 <img class="posts__item__avatar src="${value.foto_perfil}" alt="Foto de perfil do autor da postagem" />
+							 </picture>
+							 <div class="info">
+								 <h3 class="ttl-tp4">${value.autor}</h3>
+								 <time class="info__date" datetime="${value.data_post}">${localDate}</time>
+							 </div>
+
+							 <picture>
+								 <source srcset="${value.imagem}" />
+								 <img class="posts__image" src="${value.imagem}" alt="Imagem de um post da receita descrita no site" />
+							 </picture>
+							 <h2 class="posts__title ttl-tp4">${value.titulo}</h2>
+							 <p class="posts__item__description">${value.texto}</p>
+							 <button class="btn btn--new js-edit-trigger" data-id="${value.id_post}">Editar Post</button>
+							 <button class="btn btn--del js-delete-trigger" data-id="${value.id_post}">Deletar Post</button>
+						</li>`
+					);
+				});
+
+				return elements;
+			},
+
 			deletePost: e => {
 				Swal.fire({
 					title: "Tem certeza que deseja excluir?",
@@ -83,36 +91,40 @@ export default () => {
 					icon: "warning",
 					showCancelButton: true,
 					confirmButtonColor: "#3085d6",
-					cancelButtonColor: "#d33",
+					cancelButtonColor: "#cb2b44",
 					confirmButtonText: "Confirmar",
-					cancelButtonText: "Cancelar"
-				}).then(result => {
-					if (result.value) {
-						const $id = $(e.target).attr("data-id");
+					cancelButtonText: "Cancelar",
+					preConfirm: () => {
+						return new Promise(resolve => {
+							const $id = $(e.target).attr("data-id");
 
-						let data = new FormData();
-						data.append("post-id", $id);
+							let data = new FormData();
+							data.append("method", "delete");
+							data.append("post-id", $id);
 
-						$.ajax({
-							type: "POST",
-							url: Posts.cache.server,
-							data: data,
-							contentType: false,
-							processData: false,
-							cache: false,
-							dataType: "json",
-							enctype: "multipart/form-data",
-							success: response => {
-								if (response.success) {
-									Swal.fire("Feito!", "O Post foi excluído com sucesso.", "success");
-								}
-							},
-							error: (xhr, thrownError) => {
-								console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);
-								console.log(`Erro: ${thrownError}`);
-							}
+							$.ajax({
+								type: "POST",
+								url: Posts.cache.server,
+								data: data,
+								contentType: false,
+								processData: false,
+								cache: false,
+								dataType: "json",
+								enctype: "multipart/form-data"
+							})
+								.done(response => {
+									Swal.fire({ text: response.message, icon: "success" });
+									Posts.functions.listPosts();
+								})
+								.fail(() => {
+									Swal.fire({
+										title: response.message,
+										icon: "error"
+									});
+								});
 						});
-					}
+					},
+					allowOutsideClick: false
 				});
 			},
 

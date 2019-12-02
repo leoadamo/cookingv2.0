@@ -42,4 +42,16 @@
 		}
 	}
 
+	function deletePost($pdo, $array) {
+		$sql = "DELETE FROM posts WHERE id_post = ?";
+
+		try {
+			$query = $pdo->prepare($sql);
+			$success = $query->execute($array);
+			return $success ? $success : false;
+
+		} catch (PDOException $e) {
+			echo('Erro na requisição:'.$e->getMessage());
+		}
+	}
 ?>
