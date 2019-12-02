@@ -1,4 +1,5 @@
 import Api from "../settings/api";
+import Swal from "sweetalert2";
 
 export default () => {
 	const Posts = {
@@ -15,8 +16,13 @@ export default () => {
 			init: () => {
 				Posts.functions.listPosts();
 				Posts.functions.listCategories();
+
 				const userLogged = Posts.functions.getCookie("login");
 				Posts.functions.userMenu(userLogged);
+
+				$("body").on("click", ".js-delete-trigger", e => {
+					Posts.functions.deletePost(e);
+				});
 			}
 		},
 		functions: {
@@ -56,8 +62,8 @@ export default () => {
 											</picture>
 											<h2 class="posts__title ttl-tp4">${value.titulo}</h2>
 											<p class="posts__item__description">${value.texto}</p>
-											<button class="btn btn--new">Editar Post</button>
-											<button class="btn btn--del">Deletar Post</button>
+											<button class="btn btn--new js-edit-trigger" data-id="${value.id_post}">Editar Post</button>
+											<button class="btn btn--del js-delete-trigger" data-id="${value.id_post}">Deletar Post</button>
 										</li>`
 								);
 							});
@@ -66,6 +72,46 @@ export default () => {
 					error: (xhr, thrownError) => {
 						console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);
 						console.log(`Erro: ${thrownError}`);
+					}
+				});
+			},
+
+			deletePost: e => {
+				Swal.fire({
+					title: "Tem certeza que deseja excluir?",
+					text: "Esta ação não poderá ser revertida!",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "Confirmar",
+					cancelButtonText: "Cancelar"
+				}).then(result => {
+					if (result.value) {
+						const $id = $(e.target).attr("data-id");
+
+						let data = new FormData();
+						data.append("post-id", $id);
+
+						$.ajax({
+							type: "POST",
+							url: Posts.cache.server,
+							data: data,
+							contentType: false,
+							processData: false,
+							cache: false,
+							dataType: "json",
+							enctype: "multipart/form-data",
+							success: response => {
+								if (response.success) {
+									Swal.fire("Feito!", "O Post foi excluído com sucesso.", "success");
+								}
+							},
+							error: (xhr, thrownError) => {
+								console.log(`Erro na Requisição:\nStatus: ${xhr.status}`);
+								console.log(`Erro: ${thrownError}`);
+							}
+						});
 					}
 				});
 			},
