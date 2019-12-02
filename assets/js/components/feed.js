@@ -18,6 +18,10 @@ export default () => {
 				Posts.functions.listCategories();
 				Posts.functions.userMenu(Posts.functions.getCookie("login"));
 
+				$("body").on("click", ".js-edit-trigger", e => {
+					Posts.functions.updatePost(e);
+				});
+
 				$("body").on("click", ".js-delete-trigger", e => {
 					Posts.functions.deletePost(e);
 				});
@@ -126,6 +130,40 @@ export default () => {
 					},
 					allowOutsideClick: false
 				});
+			},
+
+			updatePost: e => {
+				Swal.mixin({
+					input: "text",
+					confirmButtonText: "Next &rarr;",
+					showCancelButton: true,
+					progressSteps: ["1", "2", "3"]
+				})
+					.queue([
+						{
+							title: "Título do Post",
+							text: "Insira um novo título para a postagem:"
+						},
+						{
+							title: "Nome do Autor",
+							text: "Agora corrija o nome do Autor:"
+						},
+						{
+							title: "Ajustes na descrição",
+							text: "Caso encontre algum bug, corrija a descrição:"
+						}
+					])
+					.then(result => {
+						if (result.value) {
+							const answers = JSON.stringify(result.value);
+							Swal.fire({
+								title: "Feito!",
+								text: "Suas Alterações foram salvas",
+								icon: "success",
+								confirmButtonText: "Sair"
+							});
+						}
+					});
 			},
 
 			listCategories: () => {
