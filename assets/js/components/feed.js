@@ -160,11 +160,13 @@ export default () => {
 					.then(result => {
 						if (result.value) {
 							const answers = JSON.stringify(result.value);
+
 							Swal.fire({
 								title: "Feito!",
 								text: "Suas Alterações foram salvas",
 								icon: "success",
-								confirmButtonText: "Sair"
+								confirmButtonText: "Sair",
+								scrollbarPadding: false
 							});
 						}
 					});
