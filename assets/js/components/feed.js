@@ -65,7 +65,7 @@ export default () => {
 					let localDate = new Date(value.data_post).toLocaleDateString("pt-br");
 
 					elements.push(
-						`<li class="posts__item">
+						`<li id="post-${value.id_post}" class="posts__item">
 							 <picture>
 								 <source srcset="${value.foto_perfil}"/>
 								 <img class="posts__item__avatar src="${value.foto_perfil}" alt="Foto de perfil do autor da postagem" />
@@ -146,15 +146,24 @@ export default () => {
 					.queue([
 						{
 							title: "Título do Post",
-							text: "Insira um novo título para a postagem:"
+							text: "Insira um novo título para a postagem:",
+							inputValue: $("#post-" + e.target.getAttribute("data-id"))
+								.find(".posts__title")
+								.html()
 						},
 						{
 							title: "Nome do Autor",
-							text: "Agora corrija o nome do Autor:"
+							text: "Agora corrija o nome do Autor:",
+							inputValue: $("#post-" + e.target.getAttribute("data-id"))
+								.find(".info h3")
+								.html()
 						},
 						{
 							title: "Ajustes na descrição",
-							text: "Caso encontre algum bug, corrija a descrição:"
+							text: "Caso encontre algum bug, corrija a descrição:",
+							inputValue: $("#post-" + e.target.getAttribute("data-id"))
+								.find(".posts__item__description")
+								.html()
 						}
 					])
 					.then(result => {
