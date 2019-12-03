@@ -167,8 +167,6 @@ export default () => {
 							data.append("description", result.value[2]);
 							data.append("method", "update");
 
-							console.log(...data);
-
 							$.ajax({
 								type: "POST",
 								url: Posts.cache.server,
@@ -190,7 +188,7 @@ export default () => {
 										});
 									}
 								},
-								error: (xhr, thrownError) => {
+								error: () => {
 									Swal.fire({
 										title: "Woops!",
 										text: "Erro ao atualizar suas informações",

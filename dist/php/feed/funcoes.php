@@ -56,7 +56,7 @@
 	}
 
 	function updatePost($pdo, $array) {
-		$sql = "UPDATE posts SET titulo = ?, autor = ?, texto = ? WHERE id_post = ?";
+		$sql = "UPDATE posts SET autor = ?, titulo = ?, texto = ? WHERE id_post = ?";
 
 		try {
 			$query = $pdo->prepare($sql);

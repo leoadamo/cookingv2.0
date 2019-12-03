@@ -54,7 +54,7 @@
 				$title = $_POST['title'];
 				$author = $_POST['author'];
 				$description = $_POST['description'];
-				$array = array($id, $title, $author, $description);
+				$array = array($title, $author, $description, $id);
 				$status = updatePost($pdo, $array);
 				if ($status) {
 					echo(json_encode(['success' => true, 'message' => 'Feito! Post atualizado com sucesso.']));
