@@ -19,10 +19,12 @@ export default () => {
 				Posts.functions.userMenu(Posts.functions.getCookie("login"));
 
 				$("body").on("click", ".js-edit-trigger", e => {
+					e.preventDefault();
 					Posts.functions.updatePost(e);
 				});
 
 				$("body").on("click", ".js-delete-trigger", e => {
+					e.preventDefault();
 					Posts.functions.deletePost(e);
 				});
 			}
@@ -98,6 +100,7 @@ export default () => {
 					cancelButtonColor: "#cb2b44",
 					confirmButtonText: "Confirmar",
 					cancelButtonText: "Cancelar",
+					scrollbarPadding: false,
 					preConfirm: () => {
 						return new Promise(resolve => {
 							const $id = $(e.target).attr("data-id");
@@ -137,7 +140,8 @@ export default () => {
 					input: "text",
 					confirmButtonText: "Next &rarr;",
 					showCancelButton: true,
-					progressSteps: ["1", "2", "3"]
+					progressSteps: ["1", "2", "3"],
+					scrollbarPadding: false
 				})
 					.queue([
 						{

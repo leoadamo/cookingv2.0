@@ -103,11 +103,16 @@ section {
 	display: block;
 }
 
+html.swal2-shown {
+	overflow-y: auto;
+}
+
 body {
 	line-height: 1;
 	overflow: hidden;
 
-	&.has-overflow {
+	&.has-overflow,
+	&.swal2-shown {
 		overflow: auto;
 	}
 }
