@@ -159,14 +159,46 @@ export default () => {
 					])
 					.then(result => {
 						if (result.value) {
-							const answers = JSON.stringify(result.value);
+							let data = new FormData();
 
-							Swal.fire({
-								title: "Feito!",
-								text: "Suas Alterações foram salvas",
-								icon: "success",
-								confirmButtonText: "Sair",
-								scrollbarPadding: false
+							data.append("id", e.target.getAttribute("data-id"));
+							data.append("title", result.value[0]);
+							data.append("author", result.value[1]);
+							data.append("description", result.value[2]);
+							data.append("method", "update");
+
+							console.log(...data);
+
+							$.ajax({
+								type: "POST",
+								url: Posts.cache.server,
+								data: data,
+								contentType: false,
+								processData: false,
+								cache: false,
+								dataType: "json",
+								enctype: "multipart/form-data",
+								success: response => {
+									Posts.functions.listPosts();
+									if (response.success) {
+										Swal.fire({
+											title: "Feito!",
+											text: "Suas Alterações foram salvas",
+											icon: "success",
+											confirmButtonText: "Sair",
+											scrollbarPadding: false
+										});
+									}
+								},
+								error: (xhr, thrownError) => {
+									Swal.fire({
+										title: "Woops!",
+										text: "Erro ao atualizar suas informações",
+										icon: "error",
+										confirmButtonText: "Sair",
+										scrollbarPadding: false
+									});
+								}
 							});
 						}
 					});

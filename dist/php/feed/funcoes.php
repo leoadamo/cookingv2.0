@@ -54,4 +54,17 @@
 			echo('Erro na requisição:'.$e->getMessage());
 		}
 	}
+
+	function updatePost($pdo, $array) {
+		$sql = "UPDATE posts SET titulo = ?, autor = ?, texto = ? WHERE id_post = ?";
+
+		try {
+			$query = $pdo->prepare($sql);
+			$success = $query->execute($array);
+			return $success ? $success : false;
+
+		} catch (PDOException $e) {
+			echo('Erro na requisição:'.$e->getMessage());
+		}
+	}
 ?>

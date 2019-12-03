@@ -49,6 +49,20 @@
 				}
 			break;
 
+			case 'update':
+				$id = $_POST['id'];
+				$title = $_POST['title'];
+				$author = $_POST['author'];
+				$description = $_POST['description'];
+				$array = array($id, $title, $author, $description);
+				$status = updatePost($pdo, $array);
+				if ($status) {
+					echo(json_encode(['success' => true, 'message' => 'Feito! Post atualizado com sucesso.']));
+				} else {
+					echo(json_encode(['success' => false, 'message' => 'Erro ao atualizar a postagem!']));
+				}
+			break;
+
 			default:
 				echo(json_encode(['success' => false, 'message' => 'Erro na requisição']));
 			break;
