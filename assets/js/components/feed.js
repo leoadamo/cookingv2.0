@@ -161,6 +161,7 @@ export default () => {
 						{
 							title: "Ajustes na descrição",
 							text: "Caso encontre algum bug, corrija a descrição:",
+							input: "textarea",
 							inputValue: $("#post-" + e.target.getAttribute("data-id"))
 								.find(".posts__item__description")
 								.html()
